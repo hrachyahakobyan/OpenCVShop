@@ -59,9 +59,6 @@
     <ClCompile Include="GeneratedFiles\qrc_OpenCVShop.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="stack.cpp">
-      <Filter>Source Files\core</Filter>
-    </ClCompile>
     <ClCompile Include="CV_Action_Gaussian_Blur.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
@@ -77,6 +74,12 @@
     <ClCompile Include="CVMat_QImage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UndoManager.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Session.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -84,9 +87,6 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_OpenCVShop.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stack.h">
-      <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="CV_Action_Gaussian_Blur.h">
       <Filter>Header Files\Core</Filter>
@@ -102,6 +102,12 @@
     </ClInclude>
     <ClInclude Include="CVMat_QImage.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UndoManager.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Session.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 #include <stack>
+#include <iostream>
 // OpenCV
 
 #include "opencv2\core\core.hpp"
