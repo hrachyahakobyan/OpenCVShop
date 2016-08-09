@@ -5,6 +5,8 @@ namespace core{
 	class UndoManager
 	{
 	public:
+		typedef typename std::deque<T>::const_iterator CIterator;
+		typedef typename std::deque<T>::const_reverse_iterator CRIterator;
 		UndoManager(){}
 		~UndoManager(){}
 		void push(const T& state);
@@ -14,6 +16,15 @@ namespace core{
 		void redo();
 		std::size_t undo_size() const{ return _undo_stack.size(); }
 		std::size_t redo_size() const{ return _redo_stack.size(); }
+	public:
+		CIterator undo_cbegin() const { return _undo_stack._Get_container().cbegin();}
+		CIterator undo_cend() const { return _undo_stack._Get_container().cend(); }
+		CIterator redo_cbegin() const { return _redo_stack._Get_container().cbegin(); }
+		CIterator redo_cend() const { return _redo_stack._Get_container().cend(); }
+		CRIterator undo_crbegin() const { return _undo_stack._Get_container().crbegin(); }
+		CRIterator undo_crend() const { return _undo_stack._Get_container().crend(); }
+		CRIterator redo_crbegin() const { return _redo_stack._Get_container().crbegin(); }
+		CRIterator redo_crend()  const { return _redo_stack._Get_container().crend(); }
 	private:
 		UndoManager& operator=(const UndoManager& other);
 		UndoManager(const UndoManager& other);

@@ -2,53 +2,68 @@
 #include "CV_Session.h"
 
 namespace core{
-	CV_Session::CV_Session(const cv::Mat& src) : _src(src.clone())
+	CV_Session::CV_Session(const QImage& src) 
 	{
-		assert(src.empty() == false);
+		assert(src.isNull() == false);
+		_img_undo_manager.push(src.copy());
 	}
 
 	CV_Session::~CV_Session()
 	{
 	}
 
+	void CV_Session::push(const QImage& img, const QString& action)
+	{
+		assert(img.isNull() == false);
+		_img_undo_manager.push(img.copy());
+		_action_undo_manager.push(action);
+	}
+
 	void CV_Session::undo()
 	{
-		_mat_undo_manager.undo();
-		_action_undo_manager.undo();
+		if (canUndo())
+		{
+			_img_undo_manager.undo();
+			_action_undo_manager.undo();
+		}
 	}
 
 	void CV_Session::redo()
 	{
-		_mat_undo_manager.redo();
-		_action_undo_manager.redo();
+		if (canRedo())
+		{
+			_img_undo_manager.redo();
+			_action_undo_manager.redo();
+		}
 	}
 
 	bool CV_Session::canUndo() const
 	{
-		return ((_mat_undo_manager).undo_size() != 0);
+		return ((_img_undo_manager).undo_size() != 1);
 	}
 
 	bool CV_Session::canRedo() const
 	{
-		return ((_mat_undo_manager).redo_size() != 0);
+		return ((_img_undo_manager).redo_size() != 0);
 	}
 
-	const cv::Mat& CV_Session::top() const
+	const QImage& CV_Session::topImage() const
 	{
-		return (_mat_undo_manager.undo_size() == 0 ? _src : _mat_undo_manager.top());
+		return _img_undo_manager.top();
 	}
 
-	void CV_Session::execute(const CV_Action_Base& action)
+	const QString& CV_Session::topAction() const
 	{
-		cv::Mat top = this->top().clone();
-		try {
-			action(this->top(), top);
-			_mat_undo_manager.push(top);
-			_action_undo_manager.push(action.description());
-		}
-		catch (const std::exception& e)
+		return _action_undo_manager.top();
+	}
+
+    QList<QString> CV_Session::description() const
+	{
+		QList<QString> description;
+		for (auto it = _action_undo_manager.undo_cbegin(); it != _action_undo_manager.undo_cend(); ++it)
 		{
-			std::cout << e.what() << std::endl;
+			description.push_back(*it);
 		}
+		return description;
 	}
 }

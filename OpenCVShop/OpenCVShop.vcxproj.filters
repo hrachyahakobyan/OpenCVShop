@@ -39,15 +39,24 @@
     <Filter Include="Source Files\core">
       <UniqueIdentifier>{6c9753ce-7a87-4f3d-8fe9-e5182667eeb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Views">
+      <UniqueIdentifier>{8467e636-4706-4ecb-a683-510daa9f0d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views">
+      <UniqueIdentifier>{e4c86e3e-d416-4a25-ab39-cf8f7d3aca04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Wrapper">
+      <UniqueIdentifier>{904bba5f-58cc-4a73-91b0-84549550c802}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Wrapper">
+      <UniqueIdentifier>{4bc75bac-9037-424c-80ee-d3195a1fc39e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenCVShop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_OpenCVShop.cpp">
@@ -71,14 +80,53 @@
     <ClCompile Include="CV_Action_Morphology_Ex.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
-    <ClCompile Include="CVMat_QImage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="UndoManager.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
     <ClCompile Include="CV_Session.cpp">
       <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenCVShop.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_Factory.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_Wrapper.cpp">
+      <Filter>Source Files\Wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVActionView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVActionView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionGaussianBlurView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVActionGaussianBlurView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVActionGaussianBlurView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="QT_CV.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_Median_Blur.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionMedianBlurView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVActionMedianBlurView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVActionMedianBlurView.cpp">
+      <Filter>Source Files\Views</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,25 +148,58 @@
     <ClInclude Include="CV_Action_Morphology_Ex.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="CVMat_QImage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="UndoManager.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="CV_Session.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="CV_Action_Factory.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_Wrapper.h">
+      <Filter>Header Files\Wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CVActionGaussianBlurView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_Types.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="QT_CV.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_Median_Blur.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CVActionMedianBlurView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="OpenCVShop.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="OpenCVShop.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="OpenCVShop.qrc">
       <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenCVShop.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionView.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionGaussianBlurView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionGaussianBlurView.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionMedianBlurView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionMedianBlurView.h">
+      <Filter>Header Files\Views</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

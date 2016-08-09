@@ -16,6 +16,6 @@ int main(int argc, char *argv[])
 	QApplication a(argc, argv);
 	OpenCVShop w;
 	w.show();
-	core::CV_Session session(cv::Mat(100, 100, CV_8UC3, cv::Scalar(120, 60, 90)));
+	//core::CV_Session session(cv::Mat(100, 100, CV_8UC3, cv::Scalar(120, 60, 90)));
 	return a.exec();
 }

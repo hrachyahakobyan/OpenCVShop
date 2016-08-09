@@ -1,11 +1,17 @@
-#include <QtWidgets>
+#include <vld.h> 
 
+#include <QtWidgets>
+#include <QImage>
+#include <QSysInfo>
+#include <QDebug>
+#include <cstring>
 
 // STL
 #include <string>
 #include <memory>
 #include <stack>
 #include <iostream>
+#include <unordered_map>
 // OpenCV
 
 #include "opencv2\core\core.hpp"
