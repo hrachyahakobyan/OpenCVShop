@@ -5,6 +5,7 @@
 #include "ui_OpenCVShop.h"
 #include "CVActionView.h"
 #include "CV_Session.h"
+#include "CV_Action_Types.h"
 
 class OpenCVShop : public QMainWindow
 {
@@ -14,13 +15,11 @@ public:
 	OpenCVShop(QWidget *parent = 0);
 	~OpenCVShop();
 public Q_SLOTS:
-	void on_filterGaussianButton_clicked();
-	void on_filterMedianButton_clicked();
-	void on_filterMorphButton_clicked();
 	void on_actionUndo_triggered();
 	void on_actionRedo_triggered();
 	void on_actionNew_triggered();
 	void on_actionSave_triggered();
+	void _on_cvActionToolbutton_triggeredAction(core::CV_Action_Type type);
 	void _on_cvActionView_commited(const QImage& img, const QString&);
 	void _on_cvActionView_cancelled(const QString&);
 private:

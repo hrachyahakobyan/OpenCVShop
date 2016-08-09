@@ -24,58 +24,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Filters</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="filterGaussianButton">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>52</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Gaussian</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="filterMedianButton">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>80</y>
-      <width>51</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Median</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="filterMorphButton">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>110</y>
-      <width>51</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Morph.</string>
-    </property>
-   </widget>
    <widget class="QListView" name="actionListView">
     <property name="geometry">
      <rect>
@@ -116,6 +64,7 @@
    <addaction name="menuFile"/>
    <addaction name="menuFilters"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
@@ -124,17 +73,6 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionGaussian">
-   <property name="text">
-    <string>Gaussian</string>
-   </property>
-  </action>
-  <action name="actionEx_morphology">
-   <property name="text">
-    <string>Ex. morphology</string>
-   </property>
-  </action>
   <action name="actionUndo">
    <property name="text">
     <string>Undo</string>
@@ -162,6 +100,16 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionEx_morphology">
+   <property name="text">
+    <string>Ex. morphology</string>
+   </property>
+  </action>
+  <action name="actionGaussian">
+   <property name="text">
+    <string>Gaussian</string>
    </property>
   </action>
  </widget>

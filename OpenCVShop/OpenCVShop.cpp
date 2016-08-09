@@ -3,6 +3,7 @@
 #include "CV_Action_Factory.h"
 #include "CVActionGaussianBlurView.h"
 #include "QT_CV.h"
+#include "CVFilterToolButton.h"
 
 OpenCVShop::OpenCVShop(QWidget *parent)
 	: QMainWindow(parent)
@@ -11,6 +12,9 @@ OpenCVShop::OpenCVShop(QWidget *parent)
 	ui.actionListView->setStyleSheet("QListView::item { border-bottom: 1px solid black; }");
 	_imageScene = std::unique_ptr<QGraphicsScene>(new QGraphicsScene(this));
 	allowActions(false);
+	CVFilterToolButton* filterToolButton = new CVFilterToolButton(this);
+	connect(filterToolButton, SIGNAL(cvActionToolButtonTriggeredAction(core::CV_Action_Type)), this, SLOT(_on_cvActionToolbutton_triggeredAction(core::CV_Action_Type)));
+	ui.mainToolBar->addWidget(filterToolButton);
 }
 
 OpenCVShop::~OpenCVShop()
@@ -25,6 +29,7 @@ void OpenCVShop::allowActions(bool allow)
 	ui.actionUndo->setEnabled(allow);
 	ui.actionGaussian->setEnabled(allow);
 	ui.filterGaussianButton->setEnabled(allow);
+	ui.mainToolBar->setEnabled(allow);
 }
 
 void OpenCVShop::initSession(const QImage& source)
@@ -50,24 +55,13 @@ void OpenCVShop::updateUI()
 	ui.actionListView->setModel(_listModel.get());
 }
 
-
-void OpenCVShop::on_filterGaussianButton_clicked()
+void OpenCVShop::_on_cvActionToolbutton_triggeredAction(core::CV_Action_Type type)
 {
-	auto action = core::CV_Action_Factory::sharedFactory().cv_action(core::CV_Action_Type::GaussianBlur);
+	auto action = core::CV_Action_Factory::sharedFactory().cv_action(type);
 	_actionView = std::unique_ptr<CVActionView>(new CVActionGaussianBlurView(this, std::move(action), _session->topImage()
 		));
 	connectActionView();
 	_actionView->exec();
-}
-
-void OpenCVShop::on_filterMedianButton_clicked()
-{
-
-}
-
-void OpenCVShop::on_filterMorphButton_clicked()
-{
-
 }
 
 void OpenCVShop::connectActionView()

@@ -30,12 +30,12 @@ QT_BEGIN_NAMESPACE
 class Ui_OpenCVShopClass
 {
 public:
-    QAction *actionGaussian;
-    QAction *actionEx_morphology;
     QAction *actionUndo;
     QAction *actionRedo;
     QAction *actionNew;
     QAction *actionSave;
+    QAction *actionEx_morphology;
+    QAction *actionGaussian;
     QWidget *centralWidget;
     QGraphicsView *graphicsView;
     QLabel *label;
@@ -46,18 +46,14 @@ public:
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuFilters;
-    QToolBar *mainToolBar;
     QStatusBar *statusBar;
+    QToolBar *mainToolBar;
 
     void setupUi(QMainWindow *OpenCVShopClass)
     {
         if (OpenCVShopClass->objectName().isEmpty())
             OpenCVShopClass->setObjectName(QStringLiteral("OpenCVShopClass"));
         OpenCVShopClass->resize(1159, 612);
-        actionGaussian = new QAction(OpenCVShopClass);
-        actionGaussian->setObjectName(QStringLiteral("actionGaussian"));
-        actionEx_morphology = new QAction(OpenCVShopClass);
-        actionEx_morphology->setObjectName(QStringLiteral("actionEx_morphology"));
         actionUndo = new QAction(OpenCVShopClass);
         actionUndo->setObjectName(QStringLiteral("actionUndo"));
         actionRedo = new QAction(OpenCVShopClass);
@@ -66,6 +62,10 @@ public:
         actionNew->setObjectName(QStringLiteral("actionNew"));
         actionSave = new QAction(OpenCVShopClass);
         actionSave->setObjectName(QStringLiteral("actionSave"));
+        actionEx_morphology = new QAction(OpenCVShopClass);
+        actionEx_morphology->setObjectName(QStringLiteral("actionEx_morphology"));
+        actionGaussian = new QAction(OpenCVShopClass);
+        actionGaussian->setObjectName(QStringLiteral("actionGaussian"));
         centralWidget = new QWidget(OpenCVShopClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         graphicsView = new QGraphicsView(centralWidget);
@@ -96,12 +96,12 @@ public:
         menuFilters = new QMenu(menuBar);
         menuFilters->setObjectName(QStringLiteral("menuFilters"));
         OpenCVShopClass->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(OpenCVShopClass);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        OpenCVShopClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(OpenCVShopClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         OpenCVShopClass->setStatusBar(statusBar);
+        mainToolBar = new QToolBar(OpenCVShopClass);
+        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
+        OpenCVShopClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuFilters->menuAction());
@@ -118,8 +118,6 @@ public:
     void retranslateUi(QMainWindow *OpenCVShopClass)
     {
         OpenCVShopClass->setWindowTitle(QApplication::translate("OpenCVShopClass", "OpenCVShop", 0));
-        actionGaussian->setText(QApplication::translate("OpenCVShopClass", "Gaussian", 0));
-        actionEx_morphology->setText(QApplication::translate("OpenCVShopClass", "Ex. morphology", 0));
         actionUndo->setText(QApplication::translate("OpenCVShopClass", "Undo", 0));
         actionUndo->setShortcut(QApplication::translate("OpenCVShopClass", "Ctrl+Z", 0));
         actionRedo->setText(QApplication::translate("OpenCVShopClass", "Redo", 0));
@@ -127,6 +125,8 @@ public:
         actionNew->setText(QApplication::translate("OpenCVShopClass", "New", 0));
         actionSave->setText(QApplication::translate("OpenCVShopClass", "Save", 0));
         actionSave->setShortcut(QApplication::translate("OpenCVShopClass", "Ctrl+S", 0));
+        actionEx_morphology->setText(QApplication::translate("OpenCVShopClass", "Ex. morphology", 0));
+        actionGaussian->setText(QApplication::translate("OpenCVShopClass", "Gaussian", 0));
         label->setText(QApplication::translate("OpenCVShopClass", "Filters", 0));
         filterGaussianButton->setText(QApplication::translate("OpenCVShopClass", "Gaussian", 0));
         filterMedianButton->setText(QApplication::translate("OpenCVShopClass", "Median", 0));
