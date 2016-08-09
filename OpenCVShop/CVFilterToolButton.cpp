@@ -5,12 +5,12 @@
 CVFilterToolButton::CVFilterToolButton(QWidget *parent)
 	: CVActionToolButton(parent)
 {
-	CV_QAction* gaussAction = new CV_QAction("Gaussian", this, core::CV_Action_Type::GaussianBlur);
-	CV_QAction* medianAction = new CV_QAction("Median", this, core::CV_Action_Type::MedianBlur);
-	CV_QAction* morphAction = new CV_QAction("Ex. Morph", this, core::CV_Action_Type::ExMorphology);
-	QList<CV_QAction*> actions({gaussAction, medianAction, morphAction});
+	CV_QAction* gaussAction = new CV_QAction("Gaussian blur", this, core::CV_Action_Type::GaussianBlur);
+	CV_QAction* medianAction = new CV_QAction("Median blur", this, core::CV_Action_Type::MedianBlur);
+	CV_QAction* bilateralAction = new CV_QAction("Bilateral blur", this, core::CV_Action_Type::BilateralBlur);
+	QList<CV_QAction*> actions({ gaussAction, medianAction, bilateralAction });
 	setActions(actions);
-	this->setDefaultAction(medianAction);
+	this->setDefaultAction(gaussAction);
 }
 
 

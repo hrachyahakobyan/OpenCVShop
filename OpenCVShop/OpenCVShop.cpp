@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "OpenCVShop.h"
-#include "CV_Action_Factory.h"
+#include "CVActionViewFactory.h"
 #include "CVActionGaussianBlurView.h"
 #include "QT_CV.h"
 #include "CVFilterToolButton.h"
@@ -27,8 +27,6 @@ void OpenCVShop::allowActions(bool allow)
 	ui.actionSave->setEnabled(allow);
 	ui.actionRedo->setEnabled(allow);
 	ui.actionUndo->setEnabled(allow);
-	ui.actionGaussian->setEnabled(allow);
-	ui.filterGaussianButton->setEnabled(allow);
 	ui.mainToolBar->setEnabled(allow);
 }
 
@@ -57,9 +55,7 @@ void OpenCVShop::updateUI()
 
 void OpenCVShop::_on_cvActionToolbutton_triggeredAction(core::CV_Action_Type type)
 {
-	auto action = core::CV_Action_Factory::sharedFactory().cv_action(type);
-	_actionView = std::unique_ptr<CVActionView>(new CVActionGaussianBlurView(this, std::move(action), _session->topImage()
-		));
+	_actionView = CVActionViewFactory::sharedFactory().cv_action_view(type, this, _session->topImage());
 	connectActionView();
 	_actionView->exec();
 }

@@ -15,12 +15,10 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -38,10 +36,6 @@ public:
     QAction *actionGaussian;
     QWidget *centralWidget;
     QGraphicsView *graphicsView;
-    QLabel *label;
-    QPushButton *filterGaussianButton;
-    QPushButton *filterMedianButton;
-    QPushButton *filterMorphButton;
     QListView *actionListView;
     QMenuBar *menuBar;
     QMenu *menuFile;
@@ -71,18 +65,6 @@ public:
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setGeometry(QRect(60, 30, 831, 531));
-        label = new QLabel(centralWidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(10, 30, 47, 13));
-        filterGaussianButton = new QPushButton(centralWidget);
-        filterGaussianButton->setObjectName(QStringLiteral("filterGaussianButton"));
-        filterGaussianButton->setGeometry(QRect(0, 52, 51, 21));
-        filterMedianButton = new QPushButton(centralWidget);
-        filterMedianButton->setObjectName(QStringLiteral("filterMedianButton"));
-        filterMedianButton->setGeometry(QRect(0, 80, 51, 23));
-        filterMorphButton = new QPushButton(centralWidget);
-        filterMorphButton->setObjectName(QStringLiteral("filterMorphButton"));
-        filterMorphButton->setGeometry(QRect(0, 110, 51, 23));
         actionListView = new QListView(centralWidget);
         actionListView->setObjectName(QStringLiteral("actionListView"));
         actionListView->setGeometry(QRect(900, 30, 256, 531));
@@ -127,10 +109,6 @@ public:
         actionSave->setShortcut(QApplication::translate("OpenCVShopClass", "Ctrl+S", 0));
         actionEx_morphology->setText(QApplication::translate("OpenCVShopClass", "Ex. morphology", 0));
         actionGaussian->setText(QApplication::translate("OpenCVShopClass", "Gaussian", 0));
-        label->setText(QApplication::translate("OpenCVShopClass", "Filters", 0));
-        filterGaussianButton->setText(QApplication::translate("OpenCVShopClass", "Gaussian", 0));
-        filterMedianButton->setText(QApplication::translate("OpenCVShopClass", "Median", 0));
-        filterMorphButton->setText(QApplication::translate("OpenCVShopClass", "Morph.", 0));
         menuFile->setTitle(QApplication::translate("OpenCVShopClass", "File", 0));
         menuFilters->setTitle(QApplication::translate("OpenCVShopClass", "Edit", 0));
     } // retranslateUi
