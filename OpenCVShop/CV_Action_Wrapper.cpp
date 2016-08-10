@@ -12,9 +12,17 @@ CV_Action_Wrapper::~CV_Action_Wrapper()
 {
 }
 
-QImage CV_Action_Wrapper::applyAction(const core::CV_Action_Base& action) const
+QImage CV_Action_Wrapper::applyAction(const core::CV_Action_Base& action, QString& error) const
 {
 	cv::Mat dstMat;
-	action(_src, dstMat);
+	try {
+		action(_src, dstMat);
+	}
+	catch (const cv::Exception& e)
+	{
+		error = QString(e.what());
+		return QImage();
+	}
+	error.clear();
 	return QtOcv::mat2Image(dstMat);
 }

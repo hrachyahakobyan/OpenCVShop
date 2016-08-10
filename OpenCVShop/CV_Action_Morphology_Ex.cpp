@@ -8,11 +8,16 @@ namespace core{
 		cv::Mat src = input.getMat();
 		output.create(src.size(), src.type());
 		cv::Mat dst = output.getMat();
-		cv::morphologyEx(src, dst, op, kernel, anchor, iterations, borderType, borderValue);
+		cv::morphologyEx(src, dst, _morphType, cv::getStructuringElement(_morphShape, _ksize));
 	}
 
 	std::string CV_Action_Morphology_Ex::description() const
 	{
-		return "I am a morpohlogy ex";
+		std::string desc("Action: Extended Morphology.\n");
+		desc.append("Paramerers: ");
+		desc.append("\nMorph Type = "); desc.append(std::to_string(_morphType));
+		desc.append("\nKernel size = "); desc.append(std::to_string(_ksize.height));
+		desc.append("\nMorph Shape = "); desc.append(std::to_string(_morphShape));
+		return desc;
 	}
 }

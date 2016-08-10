@@ -170,6 +170,42 @@
     <ClCompile Include="CVActionBilateralBlurView.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVMorphologyToolButton.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVMorphologyToolButton.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVMorphologyToolButton.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionDilateView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVActionDilateView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVActionDilateView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_Dilate.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_Morphology.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_Erode.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionMorphologyView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVActionMorphologyView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVActionMorphologyView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -229,6 +265,21 @@
     <ClInclude Include="GeneratedFiles\ui_CVActionBilateralBlurView.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CVActionDilateView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_Dilate.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_Morphology.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_Erode.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CVActionMorphologyView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="OpenCVShop.ui">
@@ -271,6 +322,21 @@
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="CVActionBilateralBlurView.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVMorphologyToolButton.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionDilateView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionDilateView.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionMorphologyView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionMorphologyView.h">
       <Filter>Header Files\Views</Filter>
     </CustomBuild>
   </ItemGroup>

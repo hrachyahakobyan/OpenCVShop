@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
@@ -35,6 +36,7 @@ public:
     QAction *actionEx_morphology;
     QAction *actionGaussian;
     QWidget *centralWidget;
+    QGridLayout *gridLayout;
     QGraphicsView *graphicsView;
     QListView *actionListView;
     QMenuBar *menuBar;
@@ -47,7 +49,7 @@ public:
     {
         if (OpenCVShopClass->objectName().isEmpty())
             OpenCVShopClass->setObjectName(QStringLiteral("OpenCVShopClass"));
-        OpenCVShopClass->resize(1159, 612);
+        OpenCVShopClass->resize(1024, 578);
         actionUndo = new QAction(OpenCVShopClass);
         actionUndo->setObjectName(QStringLiteral("actionUndo"));
         actionRedo = new QAction(OpenCVShopClass);
@@ -62,17 +64,29 @@ public:
         actionGaussian->setObjectName(QStringLiteral("actionGaussian"));
         centralWidget = new QWidget(OpenCVShopClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        gridLayout = new QGridLayout(centralWidget);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(60, 30, 831, 531));
+        graphicsView->setMinimumSize(QSize(800, 0));
+        graphicsView->setSizeIncrement(QSize(400, 0));
+
+        gridLayout->addWidget(graphicsView, 0, 0, 1, 1);
+
         actionListView = new QListView(centralWidget);
         actionListView->setObjectName(QStringLiteral("actionListView"));
-        actionListView->setGeometry(QRect(900, 30, 256, 531));
+        actionListView->setMinimumSize(QSize(100, 0));
+        actionListView->setMaximumSize(QSize(200, 16777215));
         actionListView->setSpacing(5);
+
+        gridLayout->addWidget(actionListView, 0, 1, 1, 1);
+
         OpenCVShopClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(OpenCVShopClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1159, 18));
+        menuBar->setGeometry(QRect(0, 0, 1024, 18));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuFilters = new QMenu(menuBar);

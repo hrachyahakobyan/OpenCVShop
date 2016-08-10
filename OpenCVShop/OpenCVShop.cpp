@@ -4,6 +4,7 @@
 #include "CVActionGaussianBlurView.h"
 #include "QT_CV.h"
 #include "CVFilterToolButton.h"
+#include "CVMorphologyToolButton.h"
 
 OpenCVShop::OpenCVShop(QWidget *parent)
 	: QMainWindow(parent)
@@ -14,7 +15,10 @@ OpenCVShop::OpenCVShop(QWidget *parent)
 	allowActions(false);
 	CVFilterToolButton* filterToolButton = new CVFilterToolButton(this);
 	connect(filterToolButton, SIGNAL(cvActionToolButtonTriggeredAction(core::CV_Action_Type)), this, SLOT(_on_cvActionToolbutton_triggeredAction(core::CV_Action_Type)));
+	CVMorphologyToolButton* morphToolButton = new CVMorphologyToolButton(this);
+	connect(morphToolButton, SIGNAL(cvActionToolButtonTriggeredAction(core::CV_Action_Type)), this, SLOT(_on_cvActionToolbutton_triggeredAction(core::CV_Action_Type)));
 	ui.mainToolBar->addWidget(filterToolButton);
+	ui.mainToolBar->addWidget(morphToolButton);
 }
 
 OpenCVShop::~OpenCVShop()

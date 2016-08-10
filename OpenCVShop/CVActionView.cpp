@@ -16,9 +16,18 @@ CVActionView::~CVActionView()
 
 void CVActionView::update()
 {
-	_res = _actionWrapper.applyAction(*_action);
-	_imageScene->clear();
-	_imageScene->addPixmap(QPixmap::fromImage(_res));
+	QString error;
+	QImage tempImg = _actionWrapper.applyAction(*_action, error);
+	if (error.isEmpty())
+	{
+		_res = tempImg;
+		_imageScene->clear();
+		_imageScene->addPixmap(QPixmap::fromImage(_res));
+	}
+	else
+	{
+		QMessageBox::critical(0, "Error", error);
+	}
 }
 
 void CVActionView::on_cancelButton_clicked()

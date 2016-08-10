@@ -7,6 +7,9 @@ CVActionView(parent, std::move(action), src)
 {
 	ui.setupUi(this);
 	ui.graphicsView->setScene(_imageScene.get());
+	core::CV_Action_Gaussian_Blur* blurAction = dynamic_cast<core::CV_Action_Gaussian_Blur*>(_action.get());
+	ui.sigmaXSpinBox->setValue(blurAction->_sigma_x);
+	ui.kernelSizeSlider->setValue(blurAction->_ksize.height);
 }
 
 CVActionGaussianBlurView::~CVActionGaussianBlurView()

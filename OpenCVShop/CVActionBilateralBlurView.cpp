@@ -7,6 +7,10 @@ CVActionView(parent, std::move(action), src)
 {
 	ui.setupUi(this);
 	ui.graphicsView->setScene(_imageScene.get());
+	core::CV_Action_Bilateral_Blur* blurAction = dynamic_cast<core::CV_Action_Bilateral_Blur*>(_action.get());
+	ui.dSpinBox->setValue(blurAction->_d);
+	ui.sigmaColorSpinBox->setValue(blurAction->_sigmaColor);
+	ui.sigmaSpaceSpinBox->setValue(blurAction->_sigmaSpace);
 }
 
 CVActionBilateralBlurView::~CVActionBilateralBlurView()

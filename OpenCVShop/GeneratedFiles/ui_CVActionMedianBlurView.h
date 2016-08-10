@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
@@ -25,36 +26,33 @@ QT_BEGIN_NAMESPACE
 class Ui_CVActionMedianBlurView
 {
 public:
-    QGraphicsView *graphicsView;
-    QPushButton *okButton;
-    QPushButton *cancelButton;
+    QGridLayout *gridLayout;
     QLabel *label;
     QSlider *kernelSizeSlider;
+    QGraphicsView *graphicsView;
+    QPushButton *cancelButton;
+    QPushButton *okButton;
 
     void setupUi(CVActionView *CVActionMedianBlurView)
     {
         if (CVActionMedianBlurView->objectName().isEmpty())
             CVActionMedianBlurView->setObjectName(QStringLiteral("CVActionMedianBlurView"));
         CVActionMedianBlurView->resize(612, 535);
-        graphicsView = new QGraphicsView(CVActionMedianBlurView);
-        graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(15, 51, 591, 441));
-        okButton = new QPushButton(CVActionMedianBlurView);
-        okButton->setObjectName(QStringLiteral("okButton"));
-        okButton->setGeometry(QRect(530, 500, 71, 23));
-        cancelButton = new QPushButton(CVActionMedianBlurView);
-        cancelButton->setObjectName(QStringLiteral("cancelButton"));
-        cancelButton->setGeometry(QRect(440, 500, 75, 23));
+        gridLayout = new QGridLayout(CVActionMedianBlurView);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         label = new QLabel(CVActionMedianBlurView);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(20, 10, 61, 31));
         QFont font;
         font.setBold(true);
         font.setWeight(75);
         label->setFont(font);
+
+        gridLayout->addWidget(label, 0, 0, 1, 1);
+
         kernelSizeSlider = new QSlider(CVActionMedianBlurView);
         kernelSizeSlider->setObjectName(QStringLiteral("kernelSizeSlider"));
-        kernelSizeSlider->setGeometry(QRect(100, 20, 321, 21));
         kernelSizeSlider->setMinimum(1);
         kernelSizeSlider->setMaximum(111);
         kernelSizeSlider->setSingleStep(2);
@@ -66,6 +64,24 @@ public:
         kernelSizeSlider->setTickPosition(QSlider::TicksBelow);
         kernelSizeSlider->setTickInterval(2);
 
+        gridLayout->addWidget(kernelSizeSlider, 0, 1, 1, 1);
+
+        graphicsView = new QGraphicsView(CVActionMedianBlurView);
+        graphicsView->setObjectName(QStringLiteral("graphicsView"));
+
+        gridLayout->addWidget(graphicsView, 1, 0, 1, 4);
+
+        cancelButton = new QPushButton(CVActionMedianBlurView);
+        cancelButton->setObjectName(QStringLiteral("cancelButton"));
+
+        gridLayout->addWidget(cancelButton, 2, 2, 1, 1);
+
+        okButton = new QPushButton(CVActionMedianBlurView);
+        okButton->setObjectName(QStringLiteral("okButton"));
+
+        gridLayout->addWidget(okButton, 2, 3, 1, 1);
+
+
         retranslateUi(CVActionMedianBlurView);
 
         QMetaObject::connectSlotsByName(CVActionMedianBlurView);
@@ -74,9 +90,9 @@ public:
     void retranslateUi(CVActionView *CVActionMedianBlurView)
     {
         CVActionMedianBlurView->setWindowTitle(QApplication::translate("CVActionMedianBlurView", "CVActionMedianBlurView", 0));
-        okButton->setText(QApplication::translate("CVActionMedianBlurView", "OK", 0));
-        cancelButton->setText(QApplication::translate("CVActionMedianBlurView", "Cancel", 0));
         label->setText(QApplication::translate("CVActionMedianBlurView", "Kernel size", 0));
+        cancelButton->setText(QApplication::translate("CVActionMedianBlurView", "Cancel", 0));
+        okButton->setText(QApplication::translate("CVActionMedianBlurView", "OK", 0));
     } // retranslateUi
 
 };
