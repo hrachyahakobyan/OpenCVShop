@@ -26,5 +26,4 @@ void CVActionMedianBlurView::on_kernelSizeSlider_valueChanged()
 	int value = ui.kernelSizeSlider->value();
 	if (value % 2 == 0) value++;
 	dynamic_cast<core::CV_Action_Median_Blur*>(_action.get())->_ksize = value;
-	update();
 }

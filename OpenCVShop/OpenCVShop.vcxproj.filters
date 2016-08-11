@@ -179,15 +179,6 @@
     <ClCompile Include="CVMorphologyToolButton.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionDilateView.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CVActionDilateView.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="CVActionDilateView.cpp">
-      <Filter>Source Files\Views</Filter>
-    </ClCompile>
     <ClCompile Include="CV_Action_Dilate.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
@@ -204,6 +195,60 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="CVActionMorphologyView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_Resize.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionResizeView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVActionResizeView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVActionResizeView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVGeomTransToolButton.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVGeomTransToolButton.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVGeomTransToolButton.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_Adaptive_Threshold.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionAdaptiveThresholdView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVActionAdaptiveThresholdView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVActionAdaptiveThresholdView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVMiscellaneousToolButton.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVMiscellaneousToolButton.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVMiscellaneousToolButton.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_Threshold.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionThresholdView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVActionThresholdView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVActionThresholdView.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
   </ItemGroup>
@@ -265,9 +310,6 @@
     <ClInclude Include="GeneratedFiles\ui_CVActionBilateralBlurView.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_CVActionDilateView.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="CV_Action_Dilate.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
@@ -278,6 +320,24 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_CVActionMorphologyView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_Resize.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CVActionResizeView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_Adaptive_Threshold.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CVActionAdaptiveThresholdView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_Threshold.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CVActionThresholdView.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -327,16 +387,34 @@
     <CustomBuild Include="CVMorphologyToolButton.h">
       <Filter>Header Files\Views</Filter>
     </CustomBuild>
-    <CustomBuild Include="CVActionDilateView.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CVActionDilateView.h">
-      <Filter>Header Files\Views</Filter>
-    </CustomBuild>
     <CustomBuild Include="CVActionMorphologyView.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="CVActionMorphologyView.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionResizeView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionResizeView.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVGeomTransToolButton.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionAdaptiveThresholdView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionAdaptiveThresholdView.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVMiscellaneousToolButton.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionThresholdView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionThresholdView.h">
       <Filter>Header Files\Views</Filter>
     </CustomBuild>
   </ItemGroup>

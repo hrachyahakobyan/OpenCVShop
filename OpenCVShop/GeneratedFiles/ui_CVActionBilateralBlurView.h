@@ -15,11 +15,13 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QGraphicsView>
-#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 #include "cvactionview.h"
 
 QT_BEGIN_NAMESPACE
@@ -27,14 +29,19 @@ QT_BEGIN_NAMESPACE
 class Ui_CVActionBilateralBlurView
 {
 public:
-    QGridLayout *gridLayout;
-    QLabel *label_3;
+    QVBoxLayout *verticalLayout;
+    QWidget *widget_2;
+    QHBoxLayout *horizontalLayout_2;
     QSpinBox *dSpinBox;
-    QLabel *label_4;
+    QLabel *label_3;
     QDoubleSpinBox *sigmaColorSpinBox;
-    QLabel *label_2;
+    QLabel *label_4;
     QDoubleSpinBox *sigmaSpaceSpinBox;
+    QLabel *label_2;
     QGraphicsView *graphicsView;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *updateButton;
     QPushButton *cancelButton;
     QPushButton *okButton;
 
@@ -42,12 +49,24 @@ public:
     {
         if (CVActionBilateralBlurView->objectName().isEmpty())
             CVActionBilateralBlurView->setObjectName(QStringLiteral("CVActionBilateralBlurView"));
-        CVActionBilateralBlurView->resize(783, 607);
-        gridLayout = new QGridLayout(CVActionBilateralBlurView);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        label_3 = new QLabel(CVActionBilateralBlurView);
+        CVActionBilateralBlurView->resize(827, 668);
+        CVActionBilateralBlurView->setLayoutDirection(Qt::RightToLeft);
+        verticalLayout = new QVBoxLayout(CVActionBilateralBlurView);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        widget_2 = new QWidget(CVActionBilateralBlurView);
+        widget_2->setObjectName(QStringLiteral("widget_2"));
+        horizontalLayout_2 = new QHBoxLayout(widget_2);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        dSpinBox = new QSpinBox(widget_2);
+        dSpinBox->setObjectName(QStringLiteral("dSpinBox"));
+
+        horizontalLayout_2->addWidget(dSpinBox);
+
+        label_3 = new QLabel(widget_2);
         label_3->setObjectName(QStringLiteral("label_3"));
         QFont font;
         font.setBold(true);
@@ -55,51 +74,67 @@ public:
         label_3->setFont(font);
         label_3->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout->addWidget(label_3, 0, 0, 1, 1);
+        horizontalLayout_2->addWidget(label_3);
 
-        dSpinBox = new QSpinBox(CVActionBilateralBlurView);
-        dSpinBox->setObjectName(QStringLiteral("dSpinBox"));
+        sigmaColorSpinBox = new QDoubleSpinBox(widget_2);
+        sigmaColorSpinBox->setObjectName(QStringLiteral("sigmaColorSpinBox"));
 
-        gridLayout->addWidget(dSpinBox, 0, 1, 1, 1);
+        horizontalLayout_2->addWidget(sigmaColorSpinBox);
 
-        label_4 = new QLabel(CVActionBilateralBlurView);
+        label_4 = new QLabel(widget_2);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setFont(font);
         label_4->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout->addWidget(label_4, 0, 2, 1, 1);
+        horizontalLayout_2->addWidget(label_4);
 
-        sigmaColorSpinBox = new QDoubleSpinBox(CVActionBilateralBlurView);
-        sigmaColorSpinBox->setObjectName(QStringLiteral("sigmaColorSpinBox"));
+        sigmaSpaceSpinBox = new QDoubleSpinBox(widget_2);
+        sigmaSpaceSpinBox->setObjectName(QStringLiteral("sigmaSpaceSpinBox"));
 
-        gridLayout->addWidget(sigmaColorSpinBox, 0, 3, 1, 1);
+        horizontalLayout_2->addWidget(sigmaSpaceSpinBox);
 
-        label_2 = new QLabel(CVActionBilateralBlurView);
+        label_2 = new QLabel(widget_2);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setFont(font);
         label_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout->addWidget(label_2, 0, 4, 1, 1);
+        horizontalLayout_2->addWidget(label_2);
 
-        sigmaSpaceSpinBox = new QDoubleSpinBox(CVActionBilateralBlurView);
-        sigmaSpaceSpinBox->setObjectName(QStringLiteral("sigmaSpaceSpinBox"));
 
-        gridLayout->addWidget(sigmaSpaceSpinBox, 0, 5, 1, 1);
+        verticalLayout->addWidget(widget_2);
 
         graphicsView = new QGraphicsView(CVActionBilateralBlurView);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
 
-        gridLayout->addWidget(graphicsView, 1, 0, 1, 7);
+        verticalLayout->addWidget(graphicsView);
 
-        cancelButton = new QPushButton(CVActionBilateralBlurView);
+        widget = new QWidget(CVActionBilateralBlurView);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setMaximumSize(QSize(300, 16777215));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        updateButton = new QPushButton(widget);
+        updateButton->setObjectName(QStringLiteral("updateButton"));
+        updateButton->setMaximumSize(QSize(100, 16777215));
+
+        horizontalLayout->addWidget(updateButton);
+
+        cancelButton = new QPushButton(widget);
         cancelButton->setObjectName(QStringLiteral("cancelButton"));
+        cancelButton->setMaximumSize(QSize(100, 16777215));
 
-        gridLayout->addWidget(cancelButton, 2, 5, 1, 1);
+        horizontalLayout->addWidget(cancelButton);
 
-        okButton = new QPushButton(CVActionBilateralBlurView);
+        okButton = new QPushButton(widget);
         okButton->setObjectName(QStringLiteral("okButton"));
+        okButton->setMaximumSize(QSize(100, 16777215));
 
-        gridLayout->addWidget(okButton, 2, 6, 1, 1);
+        horizontalLayout->addWidget(okButton);
+
+
+        verticalLayout->addWidget(widget);
 
 
         retranslateUi(CVActionBilateralBlurView);
@@ -109,10 +144,11 @@ public:
 
     void retranslateUi(CVActionView *CVActionBilateralBlurView)
     {
-        CVActionBilateralBlurView->setWindowTitle(QApplication::translate("CVActionBilateralBlurView", "CVActionBilateralBlurView", 0));
+        CVActionBilateralBlurView->setWindowTitle(QApplication::translate("CVActionBilateralBlurView", "Bilateral blur", 0));
         label_3->setText(QApplication::translate("CVActionBilateralBlurView", "d", 0));
         label_4->setText(QApplication::translate("CVActionBilateralBlurView", "Sigma color", 0));
         label_2->setText(QApplication::translate("CVActionBilateralBlurView", "Sigma space", 0));
+        updateButton->setText(QApplication::translate("CVActionBilateralBlurView", "Update", 0));
         cancelButton->setText(QApplication::translate("CVActionBilateralBlurView", "Cancel", 0));
         okButton->setText(QApplication::translate("CVActionBilateralBlurView", "OK", 0));
     } // retranslateUi

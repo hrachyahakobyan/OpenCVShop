@@ -34,18 +34,15 @@ void CVActionMorphologyView::on_kernelSizeSlider_valueChanged()
 	int value = ui.kernelSizeSlider->value();
 	if (value % 2 == 0) value++;
 	dynamic_cast<core::CV_Action_Morphology*>(_action.get())->_ksize = cv::Size(value, value);
-	update();
 }
 
 void CVActionMorphologyView::on_morphShapeComboBox_currentIndexChanged(int)
 {
 	dynamic_cast<core::CV_Action_Morphology*>(_action.get())->_morphShape = ui.morphShapeComboBox->currentIndex();
-	update();
 }
 
 void CVActionMorphologyView::on_morphTypeComboBox_currentIndexChanged(int)
 {
 	core::CV_Action_Morphology_Ex* exMorphAction = dynamic_cast<core::CV_Action_Morphology_Ex*>(_action.get());
 	exMorphAction->_morphType = ui.morphTypeComboBox->currentIndex();
-	update();
 }

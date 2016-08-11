@@ -25,7 +25,6 @@ void CVActionGaussianBlurView::update()
 void CVActionGaussianBlurView::on_sigmaXSpinBox_valueChanged(QString)
 {
 	dynamic_cast<core::CV_Action_Gaussian_Blur*>(_action.get())->_sigma_x = ui.sigmaXSpinBox->value();
-	update();
 }
 
 void CVActionGaussianBlurView::on_kernelSizeSlider_valueChanged()
@@ -33,5 +32,4 @@ void CVActionGaussianBlurView::on_kernelSizeSlider_valueChanged()
 	int value = ui.kernelSizeSlider->value();
 	if (value % 2 == 0) value++;
 	dynamic_cast<core::CV_Action_Gaussian_Blur*>(_action.get())->_ksize = cv::Size(value, value);
-	update();
 }

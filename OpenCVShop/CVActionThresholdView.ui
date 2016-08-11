@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CVActionBilateralBlurView</class>
- <widget class="CVActionView" name="CVActionBilateralBlurView">
+ <class>CVActionThresholdView</class>
+ <widget class="CVActionView" name="CVActionThresholdView">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>827</width>
-    <height>668</height>
+    <width>676</width>
+    <height>416</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Bilateral blur</string>
+   <string>Threshold</string>
   </property>
   <property name="layoutDirection">
    <enum>Qt::RightToLeft</enum>
@@ -21,56 +21,92 @@
     <widget class="QWidget" name="widget_2" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QSpinBox" name="dSpinBox"/>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_3">
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
+       <widget class="QComboBox" name="thresholdTypeComboBox">
+        <property name="maximumSize">
+         <size>
+          <width>200</width>
+          <height>16777215</height>
+         </size>
         </property>
-        <property name="text">
-         <string>d</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
+        <item>
+         <property name="text">
+          <string>Thresh binary</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Thresh  inverse binary</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Thresh trunc</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Thresh to zero</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Thresh inverse to zero</string>
+         </property>
+        </item>
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="sigmaColorSpinBox"/>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_4">
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
+       <widget class="QDoubleSpinBox" name="threshSpinBox">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
         </property>
-        <property name="text">
-         <string>Sigma color</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <property name="maximum">
+         <double>255.000000000000000</double>
         </property>
        </widget>
-      </item>
-      <item>
-       <widget class="QDoubleSpinBox" name="sigmaSpaceSpinBox"/>
       </item>
       <item>
        <widget class="QLabel" name="label_2">
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
         </property>
         <property name="text">
-         <string>Sigma space</string>
+         <string>Threshold</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDoubleSpinBox" name="maxValueSpinBox">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="maximum">
+         <double>255.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Max value</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -93,7 +129,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QPushButton" name="updateButton">
+       <widget class="QPushButton" name="okButton">
         <property name="maximumSize">
          <size>
           <width>100</width>
@@ -101,7 +137,7 @@
          </size>
         </property>
         <property name="text">
-         <string>Update</string>
+         <string>OK</string>
         </property>
        </widget>
       </item>
@@ -119,7 +155,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="okButton">
+       <widget class="QPushButton" name="updateButton">
         <property name="maximumSize">
          <size>
           <width>100</width>
@@ -127,7 +163,7 @@
          </size>
         </property>
         <property name="text">
-         <string>OK</string>
+         <string>Update</string>
         </property>
        </widget>
       </item>

@@ -15,11 +15,13 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGraphicsView>
-#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 #include "cvactionview.h"
 
 QT_BEGIN_NAMESPACE
@@ -27,40 +29,53 @@ QT_BEGIN_NAMESPACE
 class Ui_CVActionMorphologyView
 {
 public:
-    QGridLayout *gridLayout;
-    QPushButton *okButton;
-    QLabel *label;
-    QSlider *kernelSizeSlider;
+    QVBoxLayout *verticalLayout;
+    QWidget *widget_2;
+    QHBoxLayout *horizontalLayout_2;
     QComboBox *morphShapeComboBox;
-    QGraphicsView *graphicsView;
-    QPushButton *cancelButton;
     QComboBox *morphTypeComboBox;
+    QSlider *kernelSizeSlider;
+    QLabel *label;
+    QGraphicsView *graphicsView;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *okButton;
+    QPushButton *cancelButton;
+    QPushButton *updateButton;
 
     void setupUi(CVActionView *CVActionMorphologyView)
     {
         if (CVActionMorphologyView->objectName().isEmpty())
             CVActionMorphologyView->setObjectName(QStringLiteral("CVActionMorphologyView"));
-        CVActionMorphologyView->resize(843, 652);
-        gridLayout = new QGridLayout(CVActionMorphologyView);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        okButton = new QPushButton(CVActionMorphologyView);
-        okButton->setObjectName(QStringLiteral("okButton"));
+        CVActionMorphologyView->resize(843, 723);
+        CVActionMorphologyView->setLayoutDirection(Qt::RightToLeft);
+        verticalLayout = new QVBoxLayout(CVActionMorphologyView);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        widget_2 = new QWidget(CVActionMorphologyView);
+        widget_2->setObjectName(QStringLiteral("widget_2"));
+        horizontalLayout_2 = new QHBoxLayout(widget_2);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        morphShapeComboBox = new QComboBox(widget_2);
+        morphShapeComboBox->setObjectName(QStringLiteral("morphShapeComboBox"));
+        morphShapeComboBox->setMinimumSize(QSize(120, 0));
+        morphShapeComboBox->setMaximumSize(QSize(150, 16777215));
 
-        gridLayout->addWidget(okButton, 3, 3, 1, 1);
+        horizontalLayout_2->addWidget(morphShapeComboBox);
 
-        label = new QLabel(CVActionMorphologyView);
-        label->setObjectName(QStringLiteral("label"));
-        QFont font;
-        font.setBold(true);
-        font.setWeight(75);
-        label->setFont(font);
+        morphTypeComboBox = new QComboBox(widget_2);
+        morphTypeComboBox->setObjectName(QStringLiteral("morphTypeComboBox"));
+        morphTypeComboBox->setMinimumSize(QSize(120, 0));
+        morphTypeComboBox->setMaximumSize(QSize(150, 16777215));
 
-        gridLayout->addWidget(label, 1, 0, 1, 1);
+        horizontalLayout_2->addWidget(morphTypeComboBox);
 
-        kernelSizeSlider = new QSlider(CVActionMorphologyView);
+        kernelSizeSlider = new QSlider(widget_2);
         kernelSizeSlider->setObjectName(QStringLiteral("kernelSizeSlider"));
+        kernelSizeSlider->setLayoutDirection(Qt::LeftToRight);
         kernelSizeSlider->setMinimum(1);
         kernelSizeSlider->setMaximum(111);
         kernelSizeSlider->setSingleStep(2);
@@ -72,31 +87,52 @@ public:
         kernelSizeSlider->setTickPosition(QSlider::TicksBelow);
         kernelSizeSlider->setTickInterval(2);
 
-        gridLayout->addWidget(kernelSizeSlider, 1, 1, 1, 1);
+        horizontalLayout_2->addWidget(kernelSizeSlider);
 
-        morphShapeComboBox = new QComboBox(CVActionMorphologyView);
-        morphShapeComboBox->setObjectName(QStringLiteral("morphShapeComboBox"));
-        morphShapeComboBox->setMinimumSize(QSize(120, 0));
-        morphShapeComboBox->setMaximumSize(QSize(150, 16777215));
+        label = new QLabel(widget_2);
+        label->setObjectName(QStringLiteral("label"));
+        QFont font;
+        font.setBold(true);
+        font.setWeight(75);
+        label->setFont(font);
 
-        gridLayout->addWidget(morphShapeComboBox, 1, 3, 1, 1);
+        horizontalLayout_2->addWidget(label);
+
+
+        verticalLayout->addWidget(widget_2);
 
         graphicsView = new QGraphicsView(CVActionMorphologyView);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
 
-        gridLayout->addWidget(graphicsView, 2, 0, 1, 4);
+        verticalLayout->addWidget(graphicsView);
 
-        cancelButton = new QPushButton(CVActionMorphologyView);
+        widget = new QWidget(CVActionMorphologyView);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setMaximumSize(QSize(300, 16777215));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        okButton = new QPushButton(widget);
+        okButton->setObjectName(QStringLiteral("okButton"));
+        okButton->setMaximumSize(QSize(100, 16777215));
+
+        horizontalLayout->addWidget(okButton);
+
+        cancelButton = new QPushButton(widget);
         cancelButton->setObjectName(QStringLiteral("cancelButton"));
+        cancelButton->setMaximumSize(QSize(100, 16777215));
 
-        gridLayout->addWidget(cancelButton, 3, 2, 1, 1);
+        horizontalLayout->addWidget(cancelButton);
 
-        morphTypeComboBox = new QComboBox(CVActionMorphologyView);
-        morphTypeComboBox->setObjectName(QStringLiteral("morphTypeComboBox"));
-        morphTypeComboBox->setMinimumSize(QSize(120, 0));
-        morphTypeComboBox->setMaximumSize(QSize(150, 16777215));
+        updateButton = new QPushButton(widget);
+        updateButton->setObjectName(QStringLiteral("updateButton"));
+        updateButton->setMaximumSize(QSize(100, 16777215));
 
-        gridLayout->addWidget(morphTypeComboBox, 1, 2, 1, 1);
+        horizontalLayout->addWidget(updateButton);
+
+
+        verticalLayout->addWidget(widget);
 
 
         retranslateUi(CVActionMorphologyView);
@@ -109,16 +145,13 @@ public:
 
     void retranslateUi(CVActionView *CVActionMorphologyView)
     {
-        CVActionMorphologyView->setWindowTitle(QApplication::translate("CVActionMorphologyView", "CVActionMorphologyView", 0));
-        okButton->setText(QApplication::translate("CVActionMorphologyView", "OK", 0));
-        label->setText(QApplication::translate("CVActionMorphologyView", "Kernel size", 0));
+        CVActionMorphologyView->setWindowTitle(QApplication::translate("CVActionMorphologyView", "Morphology", 0));
         morphShapeComboBox->clear();
         morphShapeComboBox->insertItems(0, QStringList()
          << QApplication::translate("CVActionMorphologyView", "MORPH_RECT", 0)
          << QApplication::translate("CVActionMorphologyView", "MORPH_CROSS", 0)
          << QApplication::translate("CVActionMorphologyView", "MORPH_ELLIPSE", 0)
         );
-        cancelButton->setText(QApplication::translate("CVActionMorphologyView", "Cancel", 0));
         morphTypeComboBox->clear();
         morphTypeComboBox->insertItems(0, QStringList()
          << QApplication::translate("CVActionMorphologyView", "MORPH_ERODE", 0)
@@ -129,6 +162,10 @@ public:
          << QApplication::translate("CVActionMorphologyView", "MORPH_TOPHAT", 0)
          << QApplication::translate("CVActionMorphologyView", "MORHP_BLACKHAT", 0)
         );
+        label->setText(QApplication::translate("CVActionMorphologyView", "Kernel size", 0));
+        okButton->setText(QApplication::translate("CVActionMorphologyView", "OK", 0));
+        cancelButton->setText(QApplication::translate("CVActionMorphologyView", "Cancel", 0));
+        updateButton->setText(QApplication::translate("CVActionMorphologyView", "Update", 0));
     } // retranslateUi
 
 };

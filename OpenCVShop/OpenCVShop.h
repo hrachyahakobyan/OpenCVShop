@@ -7,6 +7,8 @@
 #include "CV_Session.h"
 #include "CV_Action_Types.h"
 
+class CVActionToolButton;
+
 class OpenCVShop : public QMainWindow
 {
 	Q_OBJECT
@@ -19,6 +21,7 @@ public Q_SLOTS:
 	void on_actionRedo_triggered();
 	void on_actionNew_triggered();
 	void on_actionSave_triggered();
+	void on_actionExit_triggered();
 	void _on_cvActionToolbutton_triggeredAction(core::CV_Action_Type type);
 	void _on_cvActionView_commited(const QImage& img, const QString&);
 	void _on_cvActionView_cancelled(const QString&);
@@ -29,10 +32,17 @@ private:
 	std::unique_ptr<core::CV_Session> _session;
 	std::unique_ptr<QStringListModel> _listModel;
 	void initSession(const QImage& source);
+	void closeEvent(QCloseEvent* closeEvent);
 	void updateUI();
 	void reset();
 	void connectActionView();
+	void saveAndExit(QCloseEvent* closeEvent);
 	void allowActions(bool allow);
+	void addToolButton(CVActionToolButton* toolButton);
+	int alertSaveChanges();
+	QString alertNewFileName();
+	QString alertSaveFileName();
+	
 };
 
 #endif // OPENCVSHOP_H

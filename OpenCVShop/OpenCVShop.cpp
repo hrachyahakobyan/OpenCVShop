@@ -5,6 +5,8 @@
 #include "QT_CV.h"
 #include "CVFilterToolButton.h"
 #include "CVMorphologyToolButton.h"
+#include "CVGeomTransToolButton.h"
+#include "CVMiscellaneousToolButton.h"
 
 OpenCVShop::OpenCVShop(QWidget *parent)
 	: QMainWindow(parent)
@@ -13,17 +15,21 @@ OpenCVShop::OpenCVShop(QWidget *parent)
 	ui.actionListView->setStyleSheet("QListView::item { border-bottom: 1px solid black; }");
 	_imageScene = std::unique_ptr<QGraphicsScene>(new QGraphicsScene(this));
 	allowActions(false);
-	CVFilterToolButton* filterToolButton = new CVFilterToolButton(this);
-	connect(filterToolButton, SIGNAL(cvActionToolButtonTriggeredAction(core::CV_Action_Type)), this, SLOT(_on_cvActionToolbutton_triggeredAction(core::CV_Action_Type)));
-	CVMorphologyToolButton* morphToolButton = new CVMorphologyToolButton(this);
-	connect(morphToolButton, SIGNAL(cvActionToolButtonTriggeredAction(core::CV_Action_Type)), this, SLOT(_on_cvActionToolbutton_triggeredAction(core::CV_Action_Type)));
-	ui.mainToolBar->addWidget(filterToolButton);
-	ui.mainToolBar->addWidget(morphToolButton);
+	/*std::unique_ptr<CVFilterToolButton> filterToolButton = std::unique_ptr<CVFilterToolButton>(new CVFilterToolButton(this));
+	std::unique_ptr<CVMorphologyToolButton> morphToolButton = std::unique_ptr<CVMorphologyToolButton>(new CVMorphologyToolButton(this));
+	std::unique_ptr<CVGeomTransToolButton> geomToolButton = std::unique_ptr<CVGeomTransToolButton>(new CVGeomTransToolButton(this));
+	std::unique_ptr<CVMiscellaneousToolButton> miscToolButton = std::unique_ptr<CVMiscellaneousToolButton>(new CVMiscellaneousToolButton(this));
+	*/addToolButton(new CVFilterToolButton(this));
+	addToolButton(new CVMorphologyToolButton(this));
+	addToolButton(new CVGeomTransToolButton(this));
+	addToolButton(new CVMiscellaneousToolButton(this));
 }
+
 
 OpenCVShop::~OpenCVShop()
 {
 	_imageScene->clear();
+	ui.mainToolBar->clear();
 }
 
 void OpenCVShop::allowActions(bool allow)
@@ -51,10 +57,17 @@ void OpenCVShop::reset()
 void OpenCVShop::updateUI()
 {
 	QImage img = _session->topImage();
+	_imageScene->clear();
 	_imageScene->addPixmap(QPixmap::fromImage(img));
 	ui.graphicsView->setScene(_imageScene.get());
 	_listModel = std::unique_ptr<QStringListModel>(new QStringListModel(_session->description()));
 	ui.actionListView->setModel(_listModel.get());
+}
+
+void OpenCVShop::addToolButton(CVActionToolButton* toolButton)
+{
+	connect(toolButton, SIGNAL(cvActionToolButtonTriggeredAction(core::CV_Action_Type)), this, SLOT(_on_cvActionToolbutton_triggeredAction(core::CV_Action_Type)));
+	ui.mainToolBar->addWidget(toolButton);
 }
 
 void OpenCVShop::_on_cvActionToolbutton_triggeredAction(core::CV_Action_Type type)
@@ -99,6 +112,7 @@ void OpenCVShop::on_actionNew_triggered()
 	if (fileName.length() > 0)
 	{
 		QImage img(fileName);
+		qDebug() << img.format() << " " << img.depth() << '\n';
 		if (img.isNull() == false)
 		{
 			reset();
@@ -115,4 +129,70 @@ void OpenCVShop::on_actionSave_triggered()
 	QString defaultFilter("JPG (*.jpg)");
 	QString saveFile = QFileDialog::getSaveFileName(0, "Save image", QDir::homePath(), filters, &defaultFilter);
 	_session->topImage().save(saveFile);
+}
+
+void OpenCVShop::on_actionExit_triggered()
+{
+	this->close();
+}
+
+void OpenCVShop::closeEvent(QCloseEvent* closeEvent)
+{
+	if (_session.get() != NULL)
+		saveAndExit(closeEvent);
+	else
+		closeEvent->accept();
+}
+
+void OpenCVShop::saveAndExit(QCloseEvent* closeEvent)
+{
+	int shouldSave = alertSaveChanges(); 
+	switch (shouldSave) {
+	case QMessageBox::Save:
+	{
+		// Save was clicked
+		QString filePath = alertSaveFileName();
+		if (filePath.isEmpty())
+			closeEvent->ignore();
+		else {
+			_session->topImage().save(filePath);
+			closeEvent->accept();
+		}
+	}
+		break;
+	case QMessageBox::Discard:
+		// Don't Save was clicked
+		closeEvent->accept();
+		break;
+	case QMessageBox::Cancel:
+		// Cancel was clicked
+		closeEvent->ignore();
+		break;
+	default:
+		// should never be reached
+		break;
+	}
+}
+
+int OpenCVShop::alertSaveChanges()
+{
+	QMessageBox msgBox;
+	msgBox.setText("The file has been modified.");
+	msgBox.setInformativeText("Do you want to save your changes?");
+	msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+	msgBox.setDefaultButton(QMessageBox::Save);
+	return msgBox.exec();
+}
+
+QString OpenCVShop::alertNewFileName()
+{
+	return QFileDialog::getOpenFileName(this,
+		tr("Choose Image"), QDir::homePath(), tr("Image Files (*.png *.jpg *.bmp)"));
+}
+
+QString OpenCVShop::alertSaveFileName()
+{
+	QString filters("JPG (*.jpg);;PNG (*.png);;BMP (*.bmp)");
+	QString defaultFilter("JPG (*.jpg)");
+	return QFileDialog::getSaveFileName(0, "Save image", QDir::homePath(), filters, &defaultFilter);
 }

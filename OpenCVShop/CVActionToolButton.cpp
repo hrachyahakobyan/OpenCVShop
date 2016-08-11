@@ -11,10 +11,11 @@ CVActionToolButton::CVActionToolButton(QWidget *parent)
 
 CVActionToolButton::~CVActionToolButton()
 {
-
+	if (this->menu() != NULL)
+		delete this->menu();
 }
 
-void CVActionToolButton::setActions(QList<CV_QAction*> actions)
+void CVActionToolButton::setActions(QList<CV_QAction*> actions, CV_QAction* defaultAction)
 {
 	QMenu* menu = new QMenu;
 	for (int i = 0; i < actions.size(); i++)
@@ -23,6 +24,7 @@ void CVActionToolButton::setActions(QList<CV_QAction*> actions)
 		connectAction(action);
 		menu->addAction(action);
 	}
+	this->setDefaultAction(defaultAction);
 	this->setMenu(menu);
 }
 

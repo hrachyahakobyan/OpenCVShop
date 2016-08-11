@@ -6,6 +6,9 @@
 #include "CV_Action_Bilateral_Blur.h"
 #include "CV_Action_Dilate.h"
 #include "CV_Action_Erode.h"
+#include "CV_Action_Resize.h"
+#include "CV_Action_Adaptive_Threshold.h"
+#include "CV_Action_Threshold.h"
 
 namespace core{
 	CV_Action_Factory::CV_Action_Factory()
@@ -16,6 +19,9 @@ namespace core{
 		Register<CV_Action_Erode>(CV_Action_Type::Erode);
 		Register<CV_Action_Median_Blur>(CV_Action_Type::MedianBlur);
 		Register<CV_Action_Bilateral_Blur>(CV_Action_Type::BilateralBlur);
+		Register<CV_Action_Resize>(CV_Action_Type::Resize);
+		Register<CV_Action_Adaptive_Threshold>(CV_Action_Type::AdaptiveThreshold);
+		Register<CV_Action_Threshold>(CV_Action_Type::Threshold);
 	}
 
 	std::unique_ptr<CV_Action_Base> CV_Action_Factory::cv_action(CV_Action_Type type)

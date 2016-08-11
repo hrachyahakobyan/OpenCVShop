@@ -19,7 +19,7 @@ public Q_SLOTS:
 	void _on_toolButtonAction_triggered();
 protected:
 	void connectAction(CV_QAction* action);
-	void setActions(QList<CV_QAction*> actions);
+	void setActions(QList<CV_QAction*> actions, CV_QAction* defaulAction);
 private:
 	Ui::CVActionToolButton ui;
 };

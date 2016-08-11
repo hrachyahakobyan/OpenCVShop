@@ -35,6 +35,7 @@ public:
     QAction *actionSave;
     QAction *actionEx_morphology;
     QAction *actionGaussian;
+    QAction *actionExit;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QGraphicsView *graphicsView;
@@ -62,6 +63,8 @@ public:
         actionEx_morphology->setObjectName(QStringLiteral("actionEx_morphology"));
         actionGaussian = new QAction(OpenCVShopClass);
         actionGaussian->setObjectName(QStringLiteral("actionGaussian"));
+        actionExit = new QAction(OpenCVShopClass);
+        actionExit->setObjectName(QStringLiteral("actionExit"));
         centralWidget = new QWidget(OpenCVShopClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -103,6 +106,7 @@ public:
         menuBar->addAction(menuFilters->menuAction());
         menuFile->addAction(actionNew);
         menuFile->addAction(actionSave);
+        menuFile->addAction(actionExit);
         menuFilters->addAction(actionUndo);
         menuFilters->addAction(actionRedo);
 
@@ -123,6 +127,7 @@ public:
         actionSave->setShortcut(QApplication::translate("OpenCVShopClass", "Ctrl+S", 0));
         actionEx_morphology->setText(QApplication::translate("OpenCVShopClass", "Ex. morphology", 0));
         actionGaussian->setText(QApplication::translate("OpenCVShopClass", "Gaussian", 0));
+        actionExit->setText(QApplication::translate("OpenCVShopClass", "Exit", 0));
         menuFile->setTitle(QApplication::translate("OpenCVShopClass", "File", 0));
         menuFilters->setTitle(QApplication::translate("OpenCVShopClass", "Edit", 0));
     } // retranslateUi

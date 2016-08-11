@@ -41,3 +41,8 @@ void CVActionView::on_okButton_clicked()
 	Q_EMIT cvActionViewDidCommit(_res, QString(_action->description().c_str()));
 	QDialog::accept();
 }
+
+void CVActionView::on_updateButton_clicked()
+{
+	update();
+}

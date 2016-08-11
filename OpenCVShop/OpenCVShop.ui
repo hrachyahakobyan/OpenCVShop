@@ -67,6 +67,7 @@
     </property>
     <addaction name="actionNew"/>
     <addaction name="actionSave"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuFilters">
     <property name="title">
@@ -124,6 +125,11 @@
   <action name="actionGaussian">
    <property name="text">
     <string>Gaussian</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>

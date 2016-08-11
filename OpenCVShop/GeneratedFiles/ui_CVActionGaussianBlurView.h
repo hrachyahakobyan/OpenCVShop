@@ -15,11 +15,13 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QGraphicsView>
-#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 #include "cvactionview.h"
 
 QT_BEGIN_NAMESPACE
@@ -27,35 +29,53 @@ QT_BEGIN_NAMESPACE
 class Ui_CVActionGaussianBlurView
 {
 public:
-    QGridLayout *gridLayout;
-    QLabel *label;
-    QSlider *kernelSizeSlider;
-    QLabel *label_2;
+    QVBoxLayout *verticalLayout;
+    QWidget *topWidget;
+    QHBoxLayout *horizontalLayout_2;
     QDoubleSpinBox *sigmaXSpinBox;
+    QLabel *label_2;
+    QSlider *kernelSizeSlider;
+    QLabel *label;
     QGraphicsView *graphicsView;
-    QPushButton *cancelButton;
+    QWidget *bottomWidget;
+    QHBoxLayout *horizontalLayout;
     QPushButton *okButton;
+    QPushButton *cancelButton;
+    QPushButton *updateButton;
 
     void setupUi(CVActionView *CVActionGaussianBlurView)
     {
         if (CVActionGaussianBlurView->objectName().isEmpty())
             CVActionGaussianBlurView->setObjectName(QStringLiteral("CVActionGaussianBlurView"));
-        CVActionGaussianBlurView->resize(677, 540);
-        gridLayout = new QGridLayout(CVActionGaussianBlurView);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        label = new QLabel(CVActionGaussianBlurView);
-        label->setObjectName(QStringLiteral("label"));
+        CVActionGaussianBlurView->resize(812, 735);
+        CVActionGaussianBlurView->setLayoutDirection(Qt::RightToLeft);
+        verticalLayout = new QVBoxLayout(CVActionGaussianBlurView);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        topWidget = new QWidget(CVActionGaussianBlurView);
+        topWidget->setObjectName(QStringLiteral("topWidget"));
+        horizontalLayout_2 = new QHBoxLayout(topWidget);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        sigmaXSpinBox = new QDoubleSpinBox(topWidget);
+        sigmaXSpinBox->setObjectName(QStringLiteral("sigmaXSpinBox"));
+
+        horizontalLayout_2->addWidget(sigmaXSpinBox);
+
+        label_2 = new QLabel(topWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
         QFont font;
         font.setBold(true);
         font.setWeight(75);
-        label->setFont(font);
+        label_2->setFont(font);
 
-        gridLayout->addWidget(label, 0, 0, 1, 1);
+        horizontalLayout_2->addWidget(label_2);
 
-        kernelSizeSlider = new QSlider(CVActionGaussianBlurView);
+        kernelSizeSlider = new QSlider(topWidget);
         kernelSizeSlider->setObjectName(QStringLiteral("kernelSizeSlider"));
+        kernelSizeSlider->setLayoutDirection(Qt::LeftToRight);
         kernelSizeSlider->setMinimum(1);
         kernelSizeSlider->setMaximum(111);
         kernelSizeSlider->setSingleStep(2);
@@ -67,33 +87,47 @@ public:
         kernelSizeSlider->setTickPosition(QSlider::TicksBelow);
         kernelSizeSlider->setTickInterval(2);
 
-        gridLayout->addWidget(kernelSizeSlider, 0, 1, 1, 1);
+        horizontalLayout_2->addWidget(kernelSizeSlider);
 
-        label_2 = new QLabel(CVActionGaussianBlurView);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setFont(font);
+        label = new QLabel(topWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setFont(font);
 
-        gridLayout->addWidget(label_2, 0, 2, 1, 1);
+        horizontalLayout_2->addWidget(label);
 
-        sigmaXSpinBox = new QDoubleSpinBox(CVActionGaussianBlurView);
-        sigmaXSpinBox->setObjectName(QStringLiteral("sigmaXSpinBox"));
 
-        gridLayout->addWidget(sigmaXSpinBox, 0, 3, 1, 1);
+        verticalLayout->addWidget(topWidget);
 
         graphicsView = new QGraphicsView(CVActionGaussianBlurView);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
 
-        gridLayout->addWidget(graphicsView, 1, 0, 1, 4);
+        verticalLayout->addWidget(graphicsView);
 
-        cancelButton = new QPushButton(CVActionGaussianBlurView);
-        cancelButton->setObjectName(QStringLiteral("cancelButton"));
-
-        gridLayout->addWidget(cancelButton, 2, 2, 1, 1);
-
-        okButton = new QPushButton(CVActionGaussianBlurView);
+        bottomWidget = new QWidget(CVActionGaussianBlurView);
+        bottomWidget->setObjectName(QStringLiteral("bottomWidget"));
+        bottomWidget->setMaximumSize(QSize(300, 16777215));
+        horizontalLayout = new QHBoxLayout(bottomWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        okButton = new QPushButton(bottomWidget);
         okButton->setObjectName(QStringLiteral("okButton"));
 
-        gridLayout->addWidget(okButton, 2, 3, 1, 1);
+        horizontalLayout->addWidget(okButton);
+
+        cancelButton = new QPushButton(bottomWidget);
+        cancelButton->setObjectName(QStringLiteral("cancelButton"));
+
+        horizontalLayout->addWidget(cancelButton);
+
+        updateButton = new QPushButton(bottomWidget);
+        updateButton->setObjectName(QStringLiteral("updateButton"));
+        updateButton->setMaximumSize(QSize(100, 16777215));
+
+        horizontalLayout->addWidget(updateButton);
+
+
+        verticalLayout->addWidget(bottomWidget);
 
 
         retranslateUi(CVActionGaussianBlurView);
@@ -103,11 +137,12 @@ public:
 
     void retranslateUi(CVActionView *CVActionGaussianBlurView)
     {
-        CVActionGaussianBlurView->setWindowTitle(QApplication::translate("CVActionGaussianBlurView", "CVActionGaussianBlurView", 0));
-        label->setText(QApplication::translate("CVActionGaussianBlurView", "Kernel size", 0));
+        CVActionGaussianBlurView->setWindowTitle(QApplication::translate("CVActionGaussianBlurView", "Gaussian blur", 0));
         label_2->setText(QApplication::translate("CVActionGaussianBlurView", "Sigma X", 0));
-        cancelButton->setText(QApplication::translate("CVActionGaussianBlurView", "Cancel", 0));
+        label->setText(QApplication::translate("CVActionGaussianBlurView", "Kernel size", 0));
         okButton->setText(QApplication::translate("CVActionGaussianBlurView", "OK", 0));
+        cancelButton->setText(QApplication::translate("CVActionGaussianBlurView", "Cancel", 0));
+        updateButton->setText(QApplication::translate("CVActionGaussianBlurView", "Update", 0));
     } // retranslateUi
 
 };

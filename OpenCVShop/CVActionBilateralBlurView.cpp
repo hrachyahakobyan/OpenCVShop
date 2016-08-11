@@ -26,17 +26,14 @@ void CVActionBilateralBlurView::update()
 void CVActionBilateralBlurView::on_dSpinBox_valueChanged(QString)
 {
 	dynamic_cast<core::CV_Action_Bilateral_Blur*>(_action.get())->_d = ui.dSpinBox->value();
-	update();
 }
 
 void CVActionBilateralBlurView::on_sigmaColorSpinBox_valueChanged(QString)
 {
 	dynamic_cast<core::CV_Action_Bilateral_Blur*>(_action.get())->_sigmaColor = ui.sigmaColorSpinBox->value();
-	update();
 }
 
 void CVActionBilateralBlurView::on_sigmaSpaceSpinBox_valueChanged(QString)
 {
 	dynamic_cast<core::CV_Action_Bilateral_Blur*>(_action.get())->_sigmaSpace = ui.sigmaSpaceSpinBox->value();
-	update();
 }

@@ -5,6 +5,9 @@
 #include "CV_Action_Factory.h"
 #include "CVActionBilateralBlurView.h"
 #include "CVActionMorphologyView.h"
+#include "CVActionResizeView.h"
+#include "CVActionAdaptiveThresholdView.h"
+#include "CVActionThresholdView.h"
 
 
 CVActionViewFactory::CVActionViewFactory()
@@ -15,6 +18,9 @@ CVActionViewFactory::CVActionViewFactory()
 	Register<CVActionMorphologyView>(core::CV_Action_Type::Dilate);
 	Register<CVActionMorphologyView>(core::CV_Action_Type::Erode);
 	Register<CVActionMorphologyView>(core::CV_Action_Type::ExMorphology);
+	Register<CVActionResizeView>(core::CV_Action_Type::Resize);
+	Register<CVActionAdaptiveThresholdView>(core::CV_Action_Type::AdaptiveThreshold);
+	Register<CVActionThresholdView>(core::CV_Action_Type::Threshold);
 }
 
 std::unique_ptr<CVActionView> CVActionViewFactory::cv_action_view(core::CV_Action_Type type, QWidget* parent, const QImage& src)
