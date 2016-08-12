@@ -112,11 +112,12 @@ void OpenCVShop::on_actionNew_triggered()
 	if (fileName.length() > 0)
 	{
 		QImage img(fileName);
-		qDebug() << img.format() << " " << img.depth() << '\n';
+		QImage rgbImg =	img.convertToFormat(QImage::Format::Format_RGB888);
+		qDebug() << rgbImg.format() << " " << rgbImg.depth() << '\n';
 		if (img.isNull() == false)
 		{
 			reset();
-			initSession(img);
+			initSession(rgbImg);
 			updateUI();
 			allowActions(true);
 		}

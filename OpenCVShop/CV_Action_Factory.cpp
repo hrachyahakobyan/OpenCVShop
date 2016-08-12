@@ -9,6 +9,8 @@
 #include "CV_Action_Resize.h"
 #include "CV_Action_Adaptive_Threshold.h"
 #include "CV_Action_Threshold.h"
+#include "CV_Action_CvtColor.h"
+#include "CV_Action_Grid.h"
 
 namespace core{
 	CV_Action_Factory::CV_Action_Factory()
@@ -22,6 +24,8 @@ namespace core{
 		Register<CV_Action_Resize>(CV_Action_Type::Resize);
 		Register<CV_Action_Adaptive_Threshold>(CV_Action_Type::AdaptiveThreshold);
 		Register<CV_Action_Threshold>(CV_Action_Type::Threshold);
+		Register<CV_Action_CvtColor>(CV_Action_Type::CvtColor);
+		Register<CV_Action_Grid>(CV_Action_Type::Grid);
 	}
 
 	std::unique_ptr<CV_Action_Base> CV_Action_Factory::cv_action(CV_Action_Type type)

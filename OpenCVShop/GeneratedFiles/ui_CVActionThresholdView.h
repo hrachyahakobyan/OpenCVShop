@@ -146,6 +146,9 @@ public:
          << QApplication::translate("CVActionThresholdView", "Thresh trunc", 0)
          << QApplication::translate("CVActionThresholdView", "Thresh to zero", 0)
          << QApplication::translate("CVActionThresholdView", "Thresh inverse to zero", 0)
+         << QApplication::translate("CVActionThresholdView", "Thresh mask", 0)
+         << QApplication::translate("CVActionThresholdView", "Thresh Otsu", 0)
+         << QApplication::translate("CVActionThresholdView", "Thresh triangle", 0)
         );
         label_2->setText(QApplication::translate("CVActionThresholdView", "Threshold", 0));
         label->setText(QApplication::translate("CVActionThresholdView", "Max value", 0));

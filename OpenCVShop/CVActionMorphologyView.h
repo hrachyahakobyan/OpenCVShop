@@ -11,8 +11,8 @@ class CVActionMorphologyView : public CVActionView
 public:
 	CVActionMorphologyView(QWidget* parent, std::unique_ptr<core::CV_Action_Base> action, const QImage& src);
 	~CVActionMorphologyView();
-	public Q_SLOTS:
-	void on_kernelSizeSlider_valueChanged();
+public Q_SLOTS:
+	void on_kernelSizeSpinBox_valueChanged(QString);
 	void on_morphShapeComboBox_currentIndexChanged(int);
 	void on_morphTypeComboBox_currentIndexChanged(int);
 private:

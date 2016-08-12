@@ -1,98 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CVActionThresholdView</class>
- <widget class="CVActionView" name="CVActionThresholdView">
+ <class>CVActionGridView</class>
+ <widget class="CVActionView" name="CVActionGridView">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>676</width>
-    <height>416</height>
+    <width>976</width>
+    <height>771</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Threshold</string>
+   <string>Grid</string>
   </property>
   <property name="layoutDirection">
    <enum>Qt::RightToLeft</enum>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QWidget" name="widget_2" native="true">
+    <widget class="QWidget" name="widget" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QComboBox" name="thresholdTypeComboBox">
-        <property name="maximumSize">
-         <size>
-          <width>200</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <item>
-         <property name="text">
-          <string>Thresh binary</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Thresh  inverse binary</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Thresh trunc</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Thresh to zero</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Thresh inverse to zero</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Thresh mask</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Thresh Otsu</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Thresh triangle</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item>
-       <widget class="QDoubleSpinBox" name="threshSpinBox">
+       <widget class="QSpinBox" name="widthSpinBox">
         <property name="maximumSize">
          <size>
           <width>100</width>
           <height>16777215</height>
          </size>
         </property>
-        <property name="maximum">
-         <double>255.000000000000000</double>
+        <property name="minimum">
+         <number>1</number>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_2">
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>16777215</height>
-         </size>
-        </property>
+       <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Threshold</string>
+         <string>Width</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -100,28 +44,51 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="maxValueSpinBox">
+       <widget class="QDoubleSpinBox" name="distanceSpinBox">
         <property name="maximumSize">
          <size>
           <width>100</width>
           <height>16777215</height>
          </size>
         </property>
+        <property name="minimum">
+         <double>1.000000000000000</double>
+        </property>
         <property name="maximum">
-         <double>255.000000000000000</double>
+         <double>100.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Distance</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDoubleSpinBox" name="angleSpinBox">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="minimum">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>89.900000000000006</double>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="label">
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>16777215</height>
-         </size>
-        </property>
         <property name="text">
-         <string>Max value</string>
+         <string>Angle</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -132,25 +99,51 @@
     </widget>
    </item>
    <item>
-    <widget class="QGraphicsView" name="graphicsView"/>
+    <widget class="QWidget" name="widget_2" native="true">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="1">
+       <widget class="QGraphicsView" name="graphicsView"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QSlider" name="offsetXSlider">
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QSlider" name="offsetYSlider">
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item>
-    <widget class="QWidget" name="widget" native="true">
+    <widget class="QWidget" name="bottomWidget" native="true">
      <property name="maximumSize">
       <size>
-       <width>300</width>
+       <width>400</width>
        <height>16777215</height>
       </size>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QPushButton" name="okButton">
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>16777215</height>
-         </size>
-        </property>
         <property name="text">
          <string>OK</string>
         </property>
@@ -158,12 +151,6 @@
       </item>
       <item>
        <widget class="QPushButton" name="cancelButton">
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>16777215</height>
-         </size>
-        </property>
         <property name="text">
          <string>Cancel</string>
         </property>
@@ -179,6 +166,13 @@
         </property>
         <property name="text">
          <string>Update</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="automaticUpdateCheckBox">
+        <property name="text">
+         <string>Automatic update</string>
         </property>
        </widget>
       </item>

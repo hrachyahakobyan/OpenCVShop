@@ -9,7 +9,7 @@ CVActionView(parent, std::move(action), src)
 	ui.setupUi(this);
 	ui.graphicsView->setScene(_imageScene.get());
 	core::CV_Action_Morphology* MorphologyAction = dynamic_cast<core::CV_Action_Morphology*>(_action.get());
-	ui.kernelSizeSlider->setValue(MorphologyAction->_ksize.height);
+	ui.kernelSizeSpinBox->setValue(MorphologyAction->_ksize.height);
 	ui.morphShapeComboBox->setCurrentIndex(MorphologyAction->_morphShape);
 	core::CV_Action_Morphology_Ex* exMorphAction = dynamic_cast<core::CV_Action_Morphology_Ex*>(_action.get());
 	if (exMorphAction != NULL)
@@ -29,9 +29,9 @@ void CVActionMorphologyView::update()
 }
 
 
-void CVActionMorphologyView::on_kernelSizeSlider_valueChanged()
+void CVActionMorphologyView::on_kernelSizeSpinBox_valueChanged(QString)
 {
-	int value = ui.kernelSizeSlider->value();
+	int value = ui.kernelSizeSpinBox->value();
 	if (value % 2 == 0) value++;
 	dynamic_cast<core::CV_Action_Morphology*>(_action.get())->_ksize = cv::Size(value, value);
 }

@@ -18,7 +18,6 @@ public Q_SLOTS:
 	void on_okButton_clicked();
 private:
 	Ui::CVActionResizeView ui;
-	void update();
 };
 
 #endif // CVACTIONRESIZEVIEW_H

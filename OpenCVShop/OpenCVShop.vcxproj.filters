@@ -251,6 +251,30 @@
     <ClCompile Include="CVActionThresholdView.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
+    <ClCompile Include="CV_Action_CvtColor.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionCvtColorView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVActionCvtColorView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVActionCvtColorView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_Grid.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionGridView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVActionGridView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVActionGridView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -340,6 +364,18 @@
     <ClInclude Include="GeneratedFiles\ui_CVActionThresholdView.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="CV_Action_CvtColor.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CVActionCvtColorView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_Grid.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CVActionGridView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="OpenCVShop.ui">
@@ -415,6 +451,18 @@
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="CVActionThresholdView.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionCvtColorView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionCvtColorView.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionGridView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionGridView.h">
       <Filter>Header Files\Views</Filter>
     </CustomBuild>
   </ItemGroup>

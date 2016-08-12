@@ -25,6 +25,7 @@ void CVActionToolButton::setActions(QList<CV_QAction*> actions, CV_QAction* defa
 		menu->addAction(action);
 	}
 	this->setDefaultAction(defaultAction);
+	connectAction(defaultAction);
 	this->setMenu(menu);
 }
 

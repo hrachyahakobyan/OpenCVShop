@@ -19,7 +19,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSlider>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include "cvactionview.h"
@@ -34,7 +34,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QComboBox *morphShapeComboBox;
     QComboBox *morphTypeComboBox;
-    QSlider *kernelSizeSlider;
+    QSpinBox *kernelSizeSpinBox;
     QLabel *label;
     QGraphicsView *graphicsView;
     QWidget *widget;
@@ -73,21 +73,14 @@ public:
 
         horizontalLayout_2->addWidget(morphTypeComboBox);
 
-        kernelSizeSlider = new QSlider(widget_2);
-        kernelSizeSlider->setObjectName(QStringLiteral("kernelSizeSlider"));
-        kernelSizeSlider->setLayoutDirection(Qt::LeftToRight);
-        kernelSizeSlider->setMinimum(1);
-        kernelSizeSlider->setMaximum(111);
-        kernelSizeSlider->setSingleStep(2);
-        kernelSizeSlider->setPageStep(10);
-        kernelSizeSlider->setValue(1);
-        kernelSizeSlider->setSliderPosition(1);
-        kernelSizeSlider->setTracking(true);
-        kernelSizeSlider->setOrientation(Qt::Horizontal);
-        kernelSizeSlider->setTickPosition(QSlider::TicksBelow);
-        kernelSizeSlider->setTickInterval(2);
+        kernelSizeSpinBox = new QSpinBox(widget_2);
+        kernelSizeSpinBox->setObjectName(QStringLiteral("kernelSizeSpinBox"));
+        kernelSizeSpinBox->setMaximumSize(QSize(100, 16777215));
+        kernelSizeSpinBox->setMinimum(1);
+        kernelSizeSpinBox->setMaximum(301);
+        kernelSizeSpinBox->setSingleStep(2);
 
-        horizontalLayout_2->addWidget(kernelSizeSlider);
+        horizontalLayout_2->addWidget(kernelSizeSpinBox);
 
         label = new QLabel(widget_2);
         label->setObjectName(QStringLiteral("label"));
@@ -95,6 +88,7 @@ public:
         font.setBold(true);
         font.setWeight(75);
         label->setFont(font);
+        label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         horizontalLayout_2->addWidget(label);
 

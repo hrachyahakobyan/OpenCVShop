@@ -6,7 +6,6 @@
 CV_Action_Wrapper::CV_Action_Wrapper(const QImage& src)
 {
 	_src = QtOcv::image2Mat(src);
-	qDebug() << _src.channels() << ' '<< _src.depth() << '\n';
 }
 
 CV_Action_Wrapper::~CV_Action_Wrapper()

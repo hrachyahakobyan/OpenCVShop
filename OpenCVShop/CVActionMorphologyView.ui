@@ -106,38 +106,20 @@
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="kernelSizeSlider">
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
+       <widget class="QSpinBox" name="kernelSizeSpinBox">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
         </property>
         <property name="minimum">
          <number>1</number>
         </property>
         <property name="maximum">
-         <number>111</number>
+         <number>301</number>
         </property>
         <property name="singleStep">
-         <number>2</number>
-        </property>
-        <property name="pageStep">
-         <number>10</number>
-        </property>
-        <property name="value">
-         <number>1</number>
-        </property>
-        <property name="sliderPosition">
-         <number>1</number>
-        </property>
-        <property name="tracking">
-         <bool>true</bool>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="tickPosition">
-         <enum>QSlider::TicksBelow</enum>
-        </property>
-        <property name="tickInterval">
          <number>2</number>
         </property>
        </widget>
@@ -152,6 +134,9 @@
         </property>
         <property name="text">
          <string>Kernel size</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>

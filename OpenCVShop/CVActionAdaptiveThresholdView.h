@@ -16,7 +16,7 @@ public Q_SLOTS:
 	void on_cSpinBox_valueChanged(QString);
 	void on_blockSizeSpinBox_valueChanged(QString);
 	void on_thresholdTypeComboBox_currentIndexChanged(int);
-	void on_adaptiveThresholdComboBox_currentIndexChanged(int);
+	void on_adaptiveThresholdTypeComboBox_currentIndexChanged(int);
 private:
 	Ui::CVActionAdaptiveThresholdView ui;
 	void update();

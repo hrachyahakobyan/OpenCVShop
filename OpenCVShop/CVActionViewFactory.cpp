@@ -8,6 +8,8 @@
 #include "CVActionResizeView.h"
 #include "CVActionAdaptiveThresholdView.h"
 #include "CVActionThresholdView.h"
+#include "CVActionCvtColorView.h"
+#include "CVActionGridView.h"
 
 
 CVActionViewFactory::CVActionViewFactory()
@@ -21,6 +23,8 @@ CVActionViewFactory::CVActionViewFactory()
 	Register<CVActionResizeView>(core::CV_Action_Type::Resize);
 	Register<CVActionAdaptiveThresholdView>(core::CV_Action_Type::AdaptiveThreshold);
 	Register<CVActionThresholdView>(core::CV_Action_Type::Threshold);
+	Register<CVActionCvtColorView>(core::CV_Action_Type::CvtColor);
+	Register<CVActionGridView>(core::CV_Action_Type::Grid);
 }
 
 std::unique_ptr<CVActionView> CVActionViewFactory::cv_action_view(core::CV_Action_Type type, QWidget* parent, const QImage& src)

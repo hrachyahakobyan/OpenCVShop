@@ -46,7 +46,7 @@ void CVActionAdaptiveThresholdView::on_thresholdTypeComboBox_currentIndexChanged
 	dynamic_cast<core::CV_Action_Adaptive_Threshold*>(_action.get())->_threshType = ui.thresholdTypeComboBox->currentIndex();
 }
 
-void CVActionAdaptiveThresholdView::on_adaptiveThresholdComboBox_currentIndexChanged(int)
+void CVActionAdaptiveThresholdView::on_adaptiveThresholdTypeComboBox_currentIndexChanged(int)
 {
 	dynamic_cast<core::CV_Action_Adaptive_Threshold*>(_action.get())->_adaptiveMethod = ui.adaptiveThresholdTypeComboBox->currentIndex();
 }

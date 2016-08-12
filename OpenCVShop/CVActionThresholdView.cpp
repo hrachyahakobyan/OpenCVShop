@@ -10,6 +10,7 @@ CVActionView(parent, std::move(action), src)
 	core::CV_Action_Threshold* threshAction = dynamic_cast<core::CV_Action_Threshold*>(_action.get());
 	ui.maxValueSpinBox->setValue(threshAction->_maxValue);
 	ui.thresholdTypeComboBox->setCurrentIndex(threshAction->_threshType);
+	ui.threshSpinBox->setValue(threshAction->_thresh);
 }
 
 CVActionThresholdView::~CVActionThresholdView()
@@ -30,7 +31,7 @@ void CVActionThresholdView::on_maxValueSpinBox_valueChanged(QString)
 
 void CVActionThresholdView::on_threshSpinBox_valueChanged(QString)
 {
-	dynamic_cast<core::CV_Action_Threshold*>(_action.get())->_thresh = ui.maxValueSpinBox->value();
+	dynamic_cast<core::CV_Action_Threshold*>(_action.get())->_thresh = ui.threshSpinBox->value();
 }
 
 void CVActionThresholdView::on_thresholdTypeComboBox_currentIndexChanged(int)

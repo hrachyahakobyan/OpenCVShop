@@ -15,11 +15,6 @@ CVActionResizeView::~CVActionResizeView()
 {
 }
 
-void CVActionResizeView::update()
-{
-	CVActionView::update();
-}
-
 void CVActionResizeView::on_interFlagComboBox_currentIndexChanged(int)
 {
 	dynamic_cast<core::CV_Action_Resize*>(_action.get())->_interFlag = ui.interFlagComboBox->currentIndex();
@@ -40,3 +35,4 @@ void CVActionResizeView::on_okButton_clicked()
 	update();
 	CVActionView::on_okButton_clicked();
 }
+

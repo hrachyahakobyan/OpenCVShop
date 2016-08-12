@@ -8,8 +8,6 @@ namespace core{
 		cv::Mat src = input.getMat();
 		output.create(src.size(), src.type());
 		cv::Mat dst = output.getMat();
-		bool equal = (src.data == dst.data);
-		qDebug() << src.type() << '\n';
 		cv::bilateralFilter(src, dst, _d, _sigmaColor, _sigmaSpace);
 	}
 
