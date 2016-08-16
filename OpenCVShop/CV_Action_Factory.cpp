@@ -11,6 +11,8 @@
 #include "CV_Action_Threshold.h"
 #include "CV_Action_CvtColor.h"
 #include "CV_Action_Grid.h"
+#include "CV_Action_EqHist.h"
+#include "CV_Action_HoughCircles.h"
 
 namespace core{
 	CV_Action_Factory::CV_Action_Factory()
@@ -26,6 +28,8 @@ namespace core{
 		Register<CV_Action_Threshold>(CV_Action_Type::Threshold);
 		Register<CV_Action_CvtColor>(CV_Action_Type::CvtColor);
 		Register<CV_Action_Grid>(CV_Action_Type::Grid);
+		Register<CV_Action_EqHist>(CV_Action_Type::EqHist);
+		Register<CV_Action_HoughCircles>(CV_Action_Type::HoughCicles);
 	}
 
 	std::unique_ptr<CV_Action_Base> CV_Action_Factory::cv_action(CV_Action_Type type)

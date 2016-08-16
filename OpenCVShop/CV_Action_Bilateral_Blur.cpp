@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "CV_Action_Bilateral_Blur.h"
 
-
 namespace core{
 	void CV_Action_Bilateral_Blur::operator()(cv::InputArray input, cv::OutputArray output) const
 	{

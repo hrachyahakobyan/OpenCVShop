@@ -18,6 +18,14 @@ CVActionThresholdView::~CVActionThresholdView()
 
 }
 
+int CVActionThresholdView::threshIndexToThresh(int index) const
+{
+	if (index <= 4) return index;
+	else if (index == 5) return 7;
+	else if (index == 6) return 8;
+	else return 16;
+}
+
 void CVActionThresholdView::update()
 {
 	CVActionView::update();
@@ -36,5 +44,5 @@ void CVActionThresholdView::on_threshSpinBox_valueChanged(QString)
 
 void CVActionThresholdView::on_thresholdTypeComboBox_currentIndexChanged(int)
 {
-	dynamic_cast<core::CV_Action_Threshold*>(_action.get())->_threshType = ui.thresholdTypeComboBox->currentIndex();
+	dynamic_cast<core::CV_Action_Threshold*>(_action.get())->_threshType = threshIndexToThresh(ui.thresholdTypeComboBox->currentIndex());
 }

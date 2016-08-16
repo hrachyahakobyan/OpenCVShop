@@ -275,6 +275,54 @@
     <ClCompile Include="CVActionGridView.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionEqHistView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVActionEqHistView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVActionEqHistView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_EqHist.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVHistToolButton.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVHistToolButton.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVHistToolButton.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_Canny.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_HoughCircles.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionHoughCirclesView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVActionHoughCirclesView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVActionHoughCirclesView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVFeatureDetToolButton.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVFeatureDetToolButton.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVFeatureDetToolButton.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -376,6 +424,24 @@
     <ClInclude Include="GeneratedFiles\ui_CVActionGridView.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CVActionEqHistView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_EqHist.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_Canny.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_HoughCircles.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CVActionHoughCirclesView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="OpenCVShop.ui">
@@ -463,6 +529,24 @@
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="CVActionGridView.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionEqHistView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionEqHistView.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVHistToolButton.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionHoughCirclesView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionHoughCirclesView.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVFeatureDetToolButton.h">
       <Filter>Header Files\Views</Filter>
     </CustomBuild>
   </ItemGroup>

@@ -7,6 +7,8 @@
 #include "CVMorphologyToolButton.h"
 #include "CVGeomTransToolButton.h"
 #include "CVMiscellaneousToolButton.h"
+#include "CVHistToolButton.h"
+#include "CVFeatureDetToolButton.h"
 
 OpenCVShop::OpenCVShop(QWidget *parent)
 	: QMainWindow(parent)
@@ -15,14 +17,12 @@ OpenCVShop::OpenCVShop(QWidget *parent)
 	ui.actionListView->setStyleSheet("QListView::item { border-bottom: 1px solid black; }");
 	_imageScene = std::unique_ptr<QGraphicsScene>(new QGraphicsScene(this));
 	allowActions(false);
-	/*std::unique_ptr<CVFilterToolButton> filterToolButton = std::unique_ptr<CVFilterToolButton>(new CVFilterToolButton(this));
-	std::unique_ptr<CVMorphologyToolButton> morphToolButton = std::unique_ptr<CVMorphologyToolButton>(new CVMorphologyToolButton(this));
-	std::unique_ptr<CVGeomTransToolButton> geomToolButton = std::unique_ptr<CVGeomTransToolButton>(new CVGeomTransToolButton(this));
-	std::unique_ptr<CVMiscellaneousToolButton> miscToolButton = std::unique_ptr<CVMiscellaneousToolButton>(new CVMiscellaneousToolButton(this));
-	*/addToolButton(new CVFilterToolButton(this));
+	addToolButton(new CVFilterToolButton(this));
 	addToolButton(new CVMorphologyToolButton(this));
 	addToolButton(new CVGeomTransToolButton(this));
 	addToolButton(new CVMiscellaneousToolButton(this));
+	addToolButton(new CVHistToolButton(this));
+	addToolButton(new CVFeatureDetToolButton(this));
 }
 
 

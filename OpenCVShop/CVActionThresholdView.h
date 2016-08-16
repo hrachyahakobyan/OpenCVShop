@@ -18,6 +18,7 @@ public Q_SLOTS:
 private:
 	Ui::CVActionThresholdView ui;
 	void update();
+	int threshIndexToThresh(int index) const;
 };
 
 #endif // CVACTIONTHRESHOLDVIEW_H

@@ -10,6 +10,8 @@
 #include "CVActionThresholdView.h"
 #include "CVActionCvtColorView.h"
 #include "CVActionGridView.h"
+#include "CVActionEqHistView.h"
+#include "CVActionHoughCirclesView.h"
 
 
 CVActionViewFactory::CVActionViewFactory()
@@ -25,6 +27,8 @@ CVActionViewFactory::CVActionViewFactory()
 	Register<CVActionThresholdView>(core::CV_Action_Type::Threshold);
 	Register<CVActionCvtColorView>(core::CV_Action_Type::CvtColor);
 	Register<CVActionGridView>(core::CV_Action_Type::Grid);
+	Register<CVActionEqHistView>(core::CV_Action_Type::EqHist);
+	Register<CVActionHoughCirclesView>(core::CV_Action_Type::HoughCicles);
 }
 
 std::unique_ptr<CVActionView> CVActionViewFactory::cv_action_view(core::CV_Action_Type type, QWidget* parent, const QImage& src)
