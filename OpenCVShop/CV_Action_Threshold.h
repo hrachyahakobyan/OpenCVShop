@@ -6,7 +6,7 @@ namespace core{
 	{
 	public:
 		CV_Action_Threshold() : _maxValue(0), _thresh(0), _threshType(cv::ThresholdTypes::THRESH_BINARY){}
-		void operator()(cv::InputArray src, cv::OutputArray out) const;
+		void operator()(const CV_Image& src, CV_Image& out) const;
 		std::string description() const;
 	public:
 		double _maxValue;

@@ -46,7 +46,7 @@ public:
     {
         if (CVActionCvtColorView->objectName().isEmpty())
             CVActionCvtColorView->setObjectName(QStringLiteral("CVActionCvtColorView"));
-        CVActionCvtColorView->resize(273, 122);
+        CVActionCvtColorView->resize(333, 122);
         verticalLayout = new QVBoxLayout(CVActionCvtColorView);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -122,9 +122,9 @@ public:
         label_2->setText(QApplication::translate("CVActionCvtColorView", "Target", 0));
         targetComboBox->clear();
         targetComboBox->insertItems(0, QStringList()
-         << QApplication::translate("CVActionCvtColorView", "BGR", 0)
-         << QApplication::translate("CVActionCvtColorView", "BGRA", 0)
-         << QApplication::translate("CVActionCvtColorView", "Grayscale", 0)
+         << QApplication::translate("CVActionCvtColorView", "RGB", 0)
+         << QApplication::translate("CVActionCvtColorView", "RGBA", 0)
+         << QApplication::translate("CVActionCvtColorView", "Gray", 0)
         );
         okButton->setText(QApplication::translate("CVActionCvtColorView", "OK", 0));
         cancelButton->setText(QApplication::translate("CVActionCvtColorView", "Cancel", 0));

@@ -8,7 +8,7 @@ namespace core{
 	public:
 		CV_Action_Morphology_Ex() : CV_Action_Morphology(), _morphType(cv::MorphTypes::MORPH_ERODE){}
 		CV_Action_Morphology_Ex(const cv::Size& ksize, int morphShape, int morphType) : CV_Action_Morphology(ksize, morphShape), _morphType(morphType){}
-		void operator()(cv::InputArray input, cv::OutputArray output) const;
+		void operator()(const CV_Image& src, CV_Image& out) const;
 		std::string description() const;
 	public:
 		int _morphType;

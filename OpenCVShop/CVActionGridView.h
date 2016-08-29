@@ -4,12 +4,16 @@
 #include "CVActionView.h"
 #include "ui_CVActionGridView.h"
 
+namespace core{
+	class CV_Action_Grid;
+}
+
 class CVActionGridView : public CVActionView
 {
 	Q_OBJECT
 
 public:
-	CVActionGridView(QWidget* parent, std::unique_ptr<core::CV_Action_Base> action, const QImage& src);
+	CVActionGridView(QWidget* parent, std::unique_ptr<CV_Action_Wrapper> wrapper);
 	~CVActionGridView();
 public Q_SLOTS:
 	void on_distanceSpinBox_valueChanged(QString s);
@@ -20,6 +24,7 @@ public Q_SLOTS:
 private:
 	Ui::CVActionGridView ui;
 	void update();
+	core::CV_Action_Grid* _gridAction;
 };
 
 #endif // CVACTIONGRIDVIEW_H

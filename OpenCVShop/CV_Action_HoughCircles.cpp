@@ -2,17 +2,16 @@
 #include "CV_Action_HoughCircles.h"
 
 namespace core{
-	void CV_Action_HoughCircles::operator()(cv::InputArray input, cv::OutputArray output) const
+	void CV_Action_HoughCircles::operator()(const CV_Image& src, CV_Image& out) const
 	{
-		cv::Mat src = input.getMat();
 		cv::Mat gray;
-		toGray(src, gray);
+		toGray(src.mat(), gray);
 		std::vector<cv::Vec3f> circles;
 		cv::GaussianBlur(gray, gray, cv::Size(9, 9), 2, 2);
 		cv::HoughCircles(gray, circles, cv::HOUGH_GRADIENT, _dp, _minDist, _param1, _param2, _minRad, _maxRad);
-		cv::Mat dst = src.clone();
-		//drawCircles(circles, dst);
-		output.assign(dst);
+		cv::Mat dst = src.mat().clone();
+		drawCircles(circles, dst);
+		out.setMat(dst, src.colorspace());
 	}
 
 	std::string CV_Action_HoughCircles::description() const

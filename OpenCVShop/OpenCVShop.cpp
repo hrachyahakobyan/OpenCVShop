@@ -2,6 +2,7 @@
 #include "OpenCVShop.h"
 #include "CVActionViewFactory.h"
 #include "CVActionGaussianBlurView.h"
+#include "CV_Action_Factory.h"
 #include "QT_CV.h"
 #include "CVFilterToolButton.h"
 #include "CVMorphologyToolButton.h"
@@ -40,7 +41,7 @@ void OpenCVShop::allowActions(bool allow)
 	ui.mainToolBar->setEnabled(allow);
 }
 
-void OpenCVShop::initSession(const QImage& source)
+void OpenCVShop::initSession(const core::CV_Image& source)
 {
 	_session = std::unique_ptr<core::CV_Session>(new core::CV_Session(source));
 }
@@ -56,8 +57,8 @@ void OpenCVShop::reset()
 
 void OpenCVShop::updateUI()
 {
-	QImage img = _session->topImage();
 	_imageScene->clear();
+	QImage img = QtOcv::mat2Image(_session->topImage().mat());
 	_imageScene->addPixmap(QPixmap::fromImage(img));
 	ui.graphicsView->setScene(_imageScene.get());
 	_listModel = std::unique_ptr<QStringListModel>(new QStringListModel(_session->description()));
@@ -72,14 +73,16 @@ void OpenCVShop::addToolButton(CVActionToolButton* toolButton)
 
 void OpenCVShop::_on_cvActionToolbutton_triggeredAction(core::CV_Action_Type type)
 {
-	_actionView = CVActionViewFactory::sharedFactory().cv_action_view(type, this, _session->topImage());
+	auto action = core::CV_Action_Factory::sharedFactory().cv_action(type);
+	std::unique_ptr<CV_Action_Wrapper> wrapper = std::unique_ptr<CV_Action_Wrapper>(new CV_Action_Wrapper(_session->topImage(), std::move(action)));
+	_actionView = CVActionViewFactory::sharedFactory().cv_action_view(type, this, std::move(wrapper));
 	connectActionView();
 	_actionView->exec();
 }
 
 void OpenCVShop::connectActionView()
 {
-	connect(_actionView.get(), SIGNAL(cvActionViewDidCommit(const QImage&, const QString&)), this, SLOT(_on_cvActionView_commited(const QImage&, const QString&)));
+	connect(_actionView.get(), SIGNAL(cvActionViewDidCommit(const core::CV_Image&, const QString&)), this, SLOT(_on_cvActionView_commited(const core::CV_Image&, const QString&)));
 	connect(_actionView.get(), SIGNAL(cvActionViewDidCancel(const QString&)), this, SLOT(_on_cvActionView_cancelled(const QString&)));
 }
 
@@ -95,7 +98,7 @@ void OpenCVShop::on_actionRedo_triggered()
 	updateUI();
 }
 
-void OpenCVShop::_on_cvActionView_commited(const QImage& img, const QString& action)
+void OpenCVShop::_on_cvActionView_commited(const core::CV_Image& img, const QString& action)
 {
 	_session->push(img, action);
 	updateUI();
@@ -113,11 +116,12 @@ void OpenCVShop::on_actionNew_triggered()
 	{
 		QImage img(fileName);
 		QImage rgbImg =	img.convertToFormat(QImage::Format::Format_RGB888);
-		qDebug() << rgbImg.format() << " " << rgbImg.depth() << '\n';
 		if (img.isNull() == false)
 		{
 			reset();
-			initSession(rgbImg);
+			cv::Mat mat = QtOcv::image2Mat(rgbImg);
+			core::CV_Image img(mat, core::CV_Colorspace::RGB);
+			initSession(img);
 			updateUI();
 			allowActions(true);
 		}
@@ -129,7 +133,7 @@ void OpenCVShop::on_actionSave_triggered()
 	QString filters("JPG (*.jpg);;PNG (*.png);;BMP (*.bmp)");
 	QString defaultFilter("JPG (*.jpg)");
 	QString saveFile = QFileDialog::getSaveFileName(0, "Save image", QDir::homePath(), filters, &defaultFilter);
-	_session->topImage().save(saveFile);
+	_session->save(saveFile);
 }
 
 void OpenCVShop::on_actionExit_triggered()
@@ -156,7 +160,7 @@ void OpenCVShop::saveAndExit(QCloseEvent* closeEvent)
 		if (filePath.isEmpty())
 			closeEvent->ignore();
 		else {
-			_session->topImage().save(filePath);
+			_session->save(filePath);
 			closeEvent->accept();
 		}
 	}

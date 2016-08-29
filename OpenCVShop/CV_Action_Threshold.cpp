@@ -3,14 +3,13 @@
 
 
 namespace core{
-	void CV_Action_Threshold::operator()(cv::InputArray input, cv::OutputArray output) const
+	void CV_Action_Threshold::operator()(const CV_Image& src, CV_Image& out) const
 	{
-		cv::Mat src = input.getMat();
 		cv::Mat dst;
 		cv::Mat gray;
-		toGray(src, gray);
+		toGray(src.mat(), gray);
 		cv::threshold(gray, dst, _thresh, _maxValue, _threshType);
-		output.assign(dst);
+		out.setMat(dst, CV_Colorspace::Gray);
 	}
 
 	std::string CV_Action_Threshold::description() const

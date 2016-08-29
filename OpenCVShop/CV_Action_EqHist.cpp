@@ -2,24 +2,23 @@
 #include "CV_Action_EqHist.h"
 
 namespace core{
-	void CV_Action_EqHist::operator()(cv::InputArray input, cv::OutputArray output) const
+	void CV_Action_EqHist::operator()(const CV_Image& src, CV_Image& out) const
 	{
-		cv::Mat src = input.getMat();
+		if (src.mat().channels() == 4)
+			CV_Error(cv::Error::Code::StsUnmatchedFormats, "Incompatible format eqHist");
 		cv::Mat dst;
-		if (src.channels() == 1)
-			eqHistGray(src, dst);
+		if (src.colorspace() == CV_Colorspace::Gray)
+			eqHistGray(src.mat(), dst);
 		else
-			eqHistColor(src, dst);
-		output.assign(dst);
+			eqHistColor(src.mat(), dst);
+		out.setMat(dst, src.colorspace());
 	}
 
 
 	void CV_Action_EqHist::eqHistColor(const cv::Mat& src, cv::Mat& dst) const
 	{
-		if (src.empty() || src.channels() < 3)
-			return;
 		cv::Mat ycrcb;
-		cv::cvtColor(src, ycrcb, CV_BGR2YCrCb);
+		cv::cvtColor(src, ycrcb, CV_RGB2YCrCb);
 
 		std::vector<cv::Mat> channels;
 		cv::split(ycrcb, channels);
@@ -27,13 +26,11 @@ namespace core{
 		cv::equalizeHist(channels[0], channels[0]);
 		cv::merge(channels, ycrcb);
 
-		cv::cvtColor(ycrcb, dst, CV_YCrCb2BGR);
+		cv::cvtColor(ycrcb, dst, CV_YCrCb2RGB);
 	}
 
 	void CV_Action_EqHist::eqHistGray(const cv::Mat& src, cv::Mat& dst) const
 	{
-		if (src.empty() || src.channels() > 1)
-			return;
 		cv::equalizeHist(src, dst);
 	}
 

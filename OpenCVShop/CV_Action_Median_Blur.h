@@ -7,7 +7,7 @@ namespace core{
 	public:
 		CV_Action_Median_Blur() : _ksize(1){}
 		CV_Action_Median_Blur(int ksize) : _ksize(ksize){}
-		void operator()(cv::InputArray input, cv::OutputArray output) const;
+		void operator()(const CV_Image& src, CV_Image& out) const;
 		std::string description() const;
 	public:
 		int _ksize;

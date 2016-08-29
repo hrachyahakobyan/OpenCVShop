@@ -8,7 +8,7 @@ namespace core{
 		CV_Action_Bilateral_Blur() : _d(3), _sigmaColor(10), _sigmaSpace(10){}
 		CV_Action_Bilateral_Blur(int d, double sigmaColor, double sigmaSpace) :
 			_d(d), _sigmaColor(sigmaColor), _sigmaSpace(sigmaSpace){}
-		void operator()(cv::InputArray input, cv::OutputArray output) const;
+		void operator()(const CV_Image& src, CV_Image& out) const;
 		std::string description() const;
 	public:
 		int _d;

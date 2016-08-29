@@ -9,7 +9,7 @@ namespace core{
 		CV_Action_Gaussian_Blur(const cv::Size& ksize,
 			double sigma_x, double sigma_y = 0.0, int border_type = 4) :
 			_ksize(ksize), _sigma_x(sigma_x), _sigma_y(sigma_y), _border_type(border_type){}
-		void operator()(cv::InputArray input, cv::OutputArray output) const;
+		void operator()(const CV_Image& src, CV_Image& out) const;
 		std::string description() const;
 	public:
 		cv::Size _ksize;

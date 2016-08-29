@@ -2,12 +2,11 @@
 #include "CV_Action_Bilateral_Blur.h"
 
 namespace core{
-	void CV_Action_Bilateral_Blur::operator()(cv::InputArray input, cv::OutputArray output) const
+	void CV_Action_Bilateral_Blur::operator()(const CV_Image& src, CV_Image& out) const
 	{
-		cv::Mat src = input.getMat();
-		output.create(src.size(), src.type());
-		cv::Mat dst = output.getMat();
-		cv::bilateralFilter(src, dst, _d, _sigmaColor, _sigmaSpace);
+		cv::Mat dst;
+		cv::bilateralFilter(src.mat(), dst, _d, _sigmaColor, _sigmaSpace);
+		out.setMat(dst, src.colorspace());
 	}
 
 	std::string CV_Action_Bilateral_Blur::description() const

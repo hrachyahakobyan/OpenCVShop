@@ -1,21 +1,20 @@
 #include "stdafx.h"
 #include "CV_Session.h"
+#include "QT_CV.h"
 
 namespace core{
-	CV_Session::CV_Session(const QImage& src) 
+	CV_Session::CV_Session(const CV_Image& src) 
 	{
-		assert(src.isNull() == false);
-		_img_undo_manager.push(src.copy());
+		_img_undo_manager.push(src);
 	}
 
 	CV_Session::~CV_Session()
 	{
 	}
 
-	void CV_Session::push(const QImage& img, const QString& action)
+	void CV_Session::push(const CV_Image& img, const QString& action)
 	{
-		assert(img.isNull() == false);
-		_img_undo_manager.push(img.copy());
+		_img_undo_manager.push(img);
 		_action_undo_manager.push(action);
 	}
 
@@ -37,24 +36,10 @@ namespace core{
 		}
 	}
 
-	bool CV_Session::canUndo() const
+	void CV_Session::save(const QString& filepath) const
 	{
-		return ((_img_undo_manager).undo_size() != 1);
-	}
-
-	bool CV_Session::canRedo() const
-	{
-		return ((_img_undo_manager).redo_size() != 0);
-	}
-
-	const QImage& CV_Session::topImage() const
-	{
-		return _img_undo_manager.top();
-	}
-
-	const QString& CV_Session::topAction() const
-	{
-		return _action_undo_manager.top();
+		QImage img(QtOcv::mat2Image_shared(_img_undo_manager.top().mat()));
+		img.save(filepath);
 	}
 
     QList<QString> CV_Session::description() const

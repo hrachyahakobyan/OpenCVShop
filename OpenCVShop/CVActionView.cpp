@@ -2,11 +2,12 @@
 #include "CVActionView.h"
 
 
-CVActionView::CVActionView(QWidget* parent, std::unique_ptr<core::CV_Action_Base> action, const QImage& src)
-	: QDialog(parent), _action(std::move(action)), _actionWrapper(src), _src(src), _res(src)
+CVActionView::CVActionView(QWidget* parent, std::unique_ptr<CV_Action_Wrapper> wrapper)
+	: QDialog(parent), _actionWrapper(std::move(wrapper))
 {
 	_imageScene = std::unique_ptr<QGraphicsScene>(new QGraphicsScene(this));
-	_imageScene->addPixmap(QPixmap::fromImage(_src));
+	QImage img = QtOcv::mat2Image(_actionWrapper->source().mat());
+	_imageScene->addPixmap(QPixmap::fromImage(img));
 }
 
 CVActionView::~CVActionView()
@@ -17,12 +18,12 @@ CVActionView::~CVActionView()
 void CVActionView::update()
 {
 	QString error;
-	QImage tempImg = _actionWrapper.applyAction(*_action, error);
+    _actionWrapper->applyAction(error);
 	if (error.isEmpty())
 	{
-		_res = tempImg;
 		_imageScene->clear();
-		_imageScene->addPixmap(QPixmap::fromImage(_res));
+		QImage img = QtOcv::mat2Image(_actionWrapper->result().mat());
+		_imageScene->addPixmap(QPixmap::fromImage(img));
 	}
 	else
 	{
@@ -30,19 +31,32 @@ void CVActionView::update()
 	}
 }
 
+void CVActionView::reset()
+{
+	_actionWrapper->reset();
+	_imageScene->clear();
+	QImage img = QtOcv::mat2Image(_actionWrapper->result().mat());
+	_imageScene->addPixmap(QPixmap::fromImage(img));
+}
+
 void CVActionView::on_cancelButton_clicked()
 {
-	Q_EMIT cvActionViewDidCancel(QString(_action->description().c_str()));
+	Q_EMIT cvActionViewDidCancel(QString(_actionWrapper->_action->description().c_str()));
 	QDialog::reject();
 }
 
 void CVActionView::on_okButton_clicked()
 {
-	Q_EMIT cvActionViewDidCommit(_res, QString(_action->description().c_str()));
+	Q_EMIT cvActionViewDidCommit(_actionWrapper->result(), QString(_actionWrapper->_action->description().c_str()));
 	QDialog::accept();
 }
 
 void CVActionView::on_updateButton_clicked()
 {
 	update();
+}
+
+void CVActionView::on_resetButton_clicked()
+{
+	reset();
 }

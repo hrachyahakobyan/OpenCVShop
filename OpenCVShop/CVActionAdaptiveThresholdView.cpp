@@ -2,17 +2,18 @@
 #include "CVActionAdaptiveThresholdView.h"
 #include "CV_Action_Adaptive_Threshold.h"
 
-CVActionAdaptiveThresholdView::CVActionAdaptiveThresholdView(QWidget* parent, std::unique_ptr<core::CV_Action_Base> action, const QImage& src) :
-CVActionView(parent, std::move(action), src)
+CVActionAdaptiveThresholdView::CVActionAdaptiveThresholdView(QWidget* parent, std::unique_ptr<CV_Action_Wrapper> wrapper) :
+CVActionView(parent, std::move(wrapper))
 {
 	ui.setupUi(this);
 	ui.graphicsView->setScene(_imageScene.get());
-	core::CV_Action_Adaptive_Threshold* threshAction = dynamic_cast<core::CV_Action_Adaptive_Threshold*>(_action.get());
-	ui.cSpinBox->setValue(threshAction->_c);
-	ui.blockSizeSpinBox->setValue(threshAction->_blockSize);
-	ui.maxValueSpinBox->setValue(threshAction->_maxValue);
-	ui.adaptiveThresholdTypeComboBox->setCurrentIndex(threshAction->_adaptiveMethod);
-	ui.thresholdTypeComboBox->setCurrentIndex(threshAction->_threshType);
+	_threshAction = dynamic_cast<core::CV_Action_Adaptive_Threshold*>(_actionWrapper->_action.get());
+	assert(_threshAction != NULL);
+	ui.cSpinBox->setValue(_threshAction->_c);
+	ui.blockSizeSpinBox->setValue(_threshAction->_blockSize);
+	ui.maxValueSpinBox->setValue(_threshAction->_maxValue);
+	ui.adaptiveThresholdTypeComboBox->setCurrentIndex(_threshAction->_adaptiveMethod);
+	ui.thresholdTypeComboBox->setCurrentIndex(_threshAction->_threshType);
 }
 
 CVActionAdaptiveThresholdView::~CVActionAdaptiveThresholdView()
@@ -28,25 +29,25 @@ void CVActionAdaptiveThresholdView::update()
 
 void CVActionAdaptiveThresholdView::on_maxValueSpinBox_valueChanged(QString)
 {
-	dynamic_cast<core::CV_Action_Adaptive_Threshold*>(_action.get())->_maxValue = ui.maxValueSpinBox->value();
+	_threshAction->_maxValue = ui.maxValueSpinBox->value();
 }
 
 void CVActionAdaptiveThresholdView::on_cSpinBox_valueChanged(QString)
 {
-	dynamic_cast<core::CV_Action_Adaptive_Threshold*>(_action.get())->_c = ui.cSpinBox->value();
+	_threshAction->_c = ui.cSpinBox->value();
 }
 
 void CVActionAdaptiveThresholdView::on_blockSizeSpinBox_valueChanged(QString)
 {
-	dynamic_cast<core::CV_Action_Adaptive_Threshold*>(_action.get())->_blockSize = ui.blockSizeSpinBox->value();
+	_threshAction->_blockSize = ui.blockSizeSpinBox->value();
 }
 
 void CVActionAdaptiveThresholdView::on_thresholdTypeComboBox_currentIndexChanged(int)
 {
-	dynamic_cast<core::CV_Action_Adaptive_Threshold*>(_action.get())->_threshType = ui.thresholdTypeComboBox->currentIndex();
+	_threshAction->_threshType = ui.thresholdTypeComboBox->currentIndex();
 }
 
 void CVActionAdaptiveThresholdView::on_adaptiveThresholdTypeComboBox_currentIndexChanged(int)
 {
-	dynamic_cast<core::CV_Action_Adaptive_Threshold*>(_action.get())->_adaptiveMethod = ui.adaptiveThresholdTypeComboBox->currentIndex();
+	_threshAction->_adaptiveMethod = ui.adaptiveThresholdTypeComboBox->currentIndex();
 }

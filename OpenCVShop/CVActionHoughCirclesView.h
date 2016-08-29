@@ -14,7 +14,7 @@ class CVActionHoughCirclesView : public CVActionView
 	Q_OBJECT
 
 public:
-	CVActionHoughCirclesView(QWidget* parent, std::unique_ptr<core::CV_Action_Base> action, const QImage& src);
+	CVActionHoughCirclesView(QWidget* parent, std::unique_ptr<CV_Action_Wrapper> wrapper);
 	~CVActionHoughCirclesView();
 public Q_SLOTS:
 	void on_dpComboBox_currentIndexChanged(int);
@@ -26,7 +26,7 @@ public Q_SLOTS:
 private:
 	Ui::CVActionHoughCirclesView ui;
 	void update();
-	core::CV_Action_HoughCircles* houghAction;
+	core::CV_Action_HoughCircles* _houghAction;
 };
 
 #endif // CVACTIONHOUGHCIRCLESVIEW_H

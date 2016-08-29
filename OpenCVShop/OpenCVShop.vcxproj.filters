@@ -296,12 +296,6 @@
     <ClCompile Include="CVHistToolButton.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="CV_Action_Canny.cpp">
-      <Filter>Source Files\core</Filter>
-    </ClCompile>
-    <ClCompile Include="CV_Image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CV_Action_HoughCircles.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
@@ -322,6 +316,21 @@
     </ClCompile>
     <ClCompile Include="CVFeatureDetToolButton.cpp">
       <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Image.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CVActionRotateView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CVActionRotateView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CVActionRotateView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_Action_Rotate.cpp">
+      <Filter>Source Files\core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -430,17 +439,23 @@
     <ClInclude Include="CV_Action_EqHist.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="CV_Action_Canny.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="CV_Image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CV_Action_HoughCircles.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_CVActionHoughCirclesView.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Image.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Colorspaces.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CVActionRotateView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_Action_Rotate.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -547,6 +562,12 @@
       <Filter>Header Files\Views</Filter>
     </CustomBuild>
     <CustomBuild Include="CVFeatureDetToolButton.h">
+      <Filter>Header Files\Views</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionRotateView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVActionRotateView.h">
       <Filter>Header Files\Views</Filter>
     </CustomBuild>
   </ItemGroup>

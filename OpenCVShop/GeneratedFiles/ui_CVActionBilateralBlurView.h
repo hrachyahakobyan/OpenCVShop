@@ -41,9 +41,9 @@ public:
     QGraphicsView *graphicsView;
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
+    QPushButton *okButton;
     QPushButton *updateButton;
     QPushButton *cancelButton;
-    QPushButton *okButton;
 
     void setupUi(CVActionView *CVActionBilateralBlurView)
     {
@@ -115,6 +115,12 @@ public:
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        okButton = new QPushButton(widget);
+        okButton->setObjectName(QStringLiteral("okButton"));
+        okButton->setMaximumSize(QSize(100, 16777215));
+
+        horizontalLayout->addWidget(okButton);
+
         updateButton = new QPushButton(widget);
         updateButton->setObjectName(QStringLiteral("updateButton"));
         updateButton->setMaximumSize(QSize(100, 16777215));
@@ -126,12 +132,6 @@ public:
         cancelButton->setMaximumSize(QSize(100, 16777215));
 
         horizontalLayout->addWidget(cancelButton);
-
-        okButton = new QPushButton(widget);
-        okButton->setObjectName(QStringLiteral("okButton"));
-        okButton->setMaximumSize(QSize(100, 16777215));
-
-        horizontalLayout->addWidget(okButton);
 
 
         verticalLayout->addWidget(widget);
@@ -148,9 +148,9 @@ public:
         label_3->setText(QApplication::translate("CVActionBilateralBlurView", "d", 0));
         label_4->setText(QApplication::translate("CVActionBilateralBlurView", "Sigma color", 0));
         label_2->setText(QApplication::translate("CVActionBilateralBlurView", "Sigma space", 0));
+        okButton->setText(QApplication::translate("CVActionBilateralBlurView", "OK", 0));
         updateButton->setText(QApplication::translate("CVActionBilateralBlurView", "Update", 0));
         cancelButton->setText(QApplication::translate("CVActionBilateralBlurView", "Cancel", 0));
-        okButton->setText(QApplication::translate("CVActionBilateralBlurView", "OK", 0));
     } // retranslateUi
 
 };

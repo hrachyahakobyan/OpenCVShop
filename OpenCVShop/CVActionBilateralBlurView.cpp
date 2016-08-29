@@ -2,15 +2,16 @@
 #include "CVActionBilateralBlurView.h"
 #include "CV_Action_Bilateral_Blur.h"
 
-CVActionBilateralBlurView::CVActionBilateralBlurView(QWidget* parent, std::unique_ptr<core::CV_Action_Base> action, const QImage& src) :
-CVActionView(parent, std::move(action), src)
+CVActionBilateralBlurView::CVActionBilateralBlurView(QWidget* parent, std::unique_ptr<CV_Action_Wrapper> wrapper) :
+CVActionView(parent, std::move(wrapper))
 {
 	ui.setupUi(this);
 	ui.graphicsView->setScene(_imageScene.get());
-	core::CV_Action_Bilateral_Blur* blurAction = dynamic_cast<core::CV_Action_Bilateral_Blur*>(_action.get());
-	ui.dSpinBox->setValue(blurAction->_d);
-	ui.sigmaColorSpinBox->setValue(blurAction->_sigmaColor);
-	ui.sigmaSpaceSpinBox->setValue(blurAction->_sigmaSpace);
+	_blurAction = dynamic_cast<core::CV_Action_Bilateral_Blur*>(_actionWrapper->_action.get());
+	assert(_blurAction != NULL);
+	ui.dSpinBox->setValue(_blurAction->_d);
+	ui.sigmaColorSpinBox->setValue(_blurAction->_sigmaColor);
+	ui.sigmaSpaceSpinBox->setValue(_blurAction->_sigmaSpace);
 }
 
 CVActionBilateralBlurView::~CVActionBilateralBlurView()
@@ -25,15 +26,15 @@ void CVActionBilateralBlurView::update()
 
 void CVActionBilateralBlurView::on_dSpinBox_valueChanged(QString)
 {
-	dynamic_cast<core::CV_Action_Bilateral_Blur*>(_action.get())->_d = ui.dSpinBox->value();
+	_blurAction->_d = ui.dSpinBox->value();
 }
 
 void CVActionBilateralBlurView::on_sigmaColorSpinBox_valueChanged(QString)
 {
-	dynamic_cast<core::CV_Action_Bilateral_Blur*>(_action.get())->_sigmaColor = ui.sigmaColorSpinBox->value();
+	_blurAction->_sigmaColor = ui.sigmaColorSpinBox->value();
 }
 
 void CVActionBilateralBlurView::on_sigmaSpaceSpinBox_valueChanged(QString)
 {
-	dynamic_cast<core::CV_Action_Bilateral_Blur*>(_action.get())->_sigmaSpace = ui.sigmaSpaceSpinBox->value();
+	_blurAction->_sigmaSpace = ui.sigmaSpaceSpinBox->value();
 }

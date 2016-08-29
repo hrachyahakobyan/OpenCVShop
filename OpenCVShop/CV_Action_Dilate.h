@@ -6,7 +6,7 @@ namespace core{
 	{
 	public:
 		using CV_Action_Morphology::CV_Action_Morphology;
-		void operator()(cv::InputArray input, cv::OutputArray output) const;
+		void operator()(const CV_Image& src, CV_Image& out) const;
 		std::string description() const;
 	};
 }

@@ -3,26 +3,29 @@
 #include "QT_CV.h"
 
 
-CV_Action_Wrapper::CV_Action_Wrapper(const QImage& src)
+CV_Action_Wrapper::CV_Action_Wrapper(const core::CV_Image& src, std::unique_ptr<core::CV_Action_Base> action) 
+	: _source(src), _result(src), _action(std::move(action))
 {
-	_src = QtOcv::image2Mat(src);
 }
 
 CV_Action_Wrapper::~CV_Action_Wrapper()
 {
 }
 
-QImage CV_Action_Wrapper::applyAction(const core::CV_Action_Base& action, QString& error) const
+void CV_Action_Wrapper::reset()
 {
-	cv::Mat dstMat;
+	_result.setMat(_source.mat(), _source.colorspace());
+}
+
+void CV_Action_Wrapper::applyAction(QString& error) 
+{
 	try {
-		action(_src, dstMat);
+		core::CV_Image temp;
+		_action->operator()(_source, _result);
 	}
 	catch (const cv::Exception& e)
 	{
 		error = QString(e.what());
-		return QImage();
 	}
 	error.clear();
-	return QtOcv::mat2Image(dstMat);
 }

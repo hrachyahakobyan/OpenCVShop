@@ -2,21 +2,23 @@
 #include "CV_Action_CvtColor.h"
 
 namespace core{
-	void CV_Action_CvtColor::operator()(cv::InputArray input, cv::OutputArray output) const
+	void CV_Action_CvtColor::operator()(const CV_Image& src, CV_Image& out) const
 	{
-		cv::Mat src = input.getMat();
-		qDebug() << src.channels() << '\n';
-		cv::Mat dst = output.getMat();
-		cv::cvtColor(src, dst, _code, _dstCn);
-		output.assign(dst);
+		CV_Colorspace srcColor, dstColor;
+		colorspacesForConversionCode(cv::ColorConversionCodes(_code), srcColor, dstColor);
+		if (srcColor != src.colorspace())
+			CV_Error(cv::Error::Code::StsUnmatchedFormats, "Incompatible source while converting formats");
+		int dstChannels = channelsForColorspace(dstColor);
+		cv::Mat dst;
+		cv::cvtColor(src.mat(), dst, dstChannels);
+		out.setMat(dst, dstColor);
 	}
-
+	
 	std::string CV_Action_CvtColor::description() const
 	{
 		std::string desc("Action: Convert color.\n");
 		desc.append("Paramerers: ");
 		desc.append("\n Code = "); desc.append(std::to_string(_code));
-		desc.append("\n Dest channels "); desc.append(std::to_string(_dstCn));
 		return desc;
 	}
 }

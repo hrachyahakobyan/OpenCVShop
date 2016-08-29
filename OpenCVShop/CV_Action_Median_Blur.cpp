@@ -3,12 +3,11 @@
 
 
 namespace core{
-	void CV_Action_Median_Blur::operator()(cv::InputArray input, cv::OutputArray output) const
+	void CV_Action_Median_Blur::operator()(const CV_Image& src, CV_Image& out) const
 	{
-		cv::Mat src = input.getMat();
-		output.create(src.size(), src.type());
-		cv::Mat dst = output.getMat();
-		cv::medianBlur(src, dst, _ksize);
+		cv::Mat dst;
+		cv::medianBlur(src.mat(), dst, _ksize);
+		out.setMat(dst, src.colorspace());
 	}
 
 	std::string CV_Action_Median_Blur::description() const

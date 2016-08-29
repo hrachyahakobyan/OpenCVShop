@@ -4,12 +4,16 @@
 #include "CVActionView.h"
 #include "ui_CVActionAdaptiveThresholdView.h"
 
+namespace core{
+	class CV_Action_Adaptive_Threshold;
+}
+
 class CVActionAdaptiveThresholdView : public CVActionView
 {
 	Q_OBJECT
 
 public:
-	CVActionAdaptiveThresholdView(QWidget* parent, std::unique_ptr<core::CV_Action_Base> action, const QImage& src);
+	CVActionAdaptiveThresholdView(QWidget* parent, std::unique_ptr<CV_Action_Wrapper> wrapper);
 	~CVActionAdaptiveThresholdView();
 public Q_SLOTS:
 	void on_maxValueSpinBox_valueChanged(QString);
@@ -20,6 +24,7 @@ public Q_SLOTS:
 private:
 	Ui::CVActionAdaptiveThresholdView ui;
 	void update();
+	core::CV_Action_Adaptive_Threshold* _threshAction;
 };
 
 #endif // CVACTIONADAPTIVETHRESHOLDVIEW_H

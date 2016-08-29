@@ -2,12 +2,11 @@
 #include "CV_Action_Gaussian_Blur.h"
 
 namespace core{
-	void CV_Action_Gaussian_Blur::operator()(cv::InputArray input, cv::OutputArray output) const
+	void CV_Action_Gaussian_Blur::operator()(const CV_Image& src, CV_Image& out) const
 	{
-		cv::Mat src = input.getMat();
-		output.create(src.size(), src.type());
-		cv::Mat dst = output.getMat();
-		cv::GaussianBlur(src, dst, _ksize, _sigma_x, _sigma_y, _border_type);
+		cv::Mat dst;
+		cv::GaussianBlur(src.mat(), dst, _ksize, _sigma_x, _sigma_y, _border_type);
+		out.setMat(dst, src.colorspace());
 	}
 
 	std::string CV_Action_Gaussian_Blur::description() const

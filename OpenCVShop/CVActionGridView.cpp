@@ -2,15 +2,16 @@
 #include "CVActionGridView.h"
 #include "CV_Action_Grid.h"
 
-CVActionGridView::CVActionGridView(QWidget* parent, std::unique_ptr<core::CV_Action_Base> action, const QImage& src) :
-CVActionView(parent, std::move(action), src)
+CVActionGridView::CVActionGridView(QWidget* parent, std::unique_ptr<CV_Action_Wrapper> wrapper) :
+CVActionView(parent, std::move(wrapper))
 {
 	ui.setupUi(this);
 	ui.graphicsView->setScene(_imageScene.get());
-	core::CV_Action_Grid* gridAction = dynamic_cast<core::CV_Action_Grid*>(_action.get());
-	ui.angleSpinBox->setValue(gridAction->_angle);
-	ui.distanceSpinBox->setValue(gridAction->_dist);
-	ui.widthSpinBox->setValue(gridAction->_line_width);
+	_gridAction = dynamic_cast<core::CV_Action_Grid*>(_actionWrapper->_action.get());
+	assert(_gridAction != NULL);
+	ui.angleSpinBox->setValue(_gridAction->_angle);
+	ui.distanceSpinBox->setValue(_gridAction->_dist);
+	ui.widthSpinBox->setValue(_gridAction->_line_width);
 	ui.offsetXSlider->setValue(0);
 	ui.offsetYSlider->setValue(0);
 }
@@ -22,31 +23,31 @@ CVActionGridView::~CVActionGridView()
 
 void CVActionGridView::on_distanceSpinBox_valueChanged(QString)
 {
-	dynamic_cast<core::CV_Action_Grid*>(_action.get())->_dist = ui.distanceSpinBox->value();
+	_gridAction->_dist = ui.distanceSpinBox->value();
 	if (ui.automaticUpdateCheckBox->isChecked()) update();
 }
 
 void CVActionGridView::on_angleSpinBox_valueChanged(QString)
 {
-	dynamic_cast<core::CV_Action_Grid*>(_action.get())->_angle = ui.angleSpinBox->value();
+	_gridAction->_angle = ui.angleSpinBox->value();
 	if (ui.automaticUpdateCheckBox->isChecked()) update();
 }
 
 void CVActionGridView::on_widthSpinBox_valueChanged(QString)
 {
-	dynamic_cast<core::CV_Action_Grid*>(_action.get())->_line_width = ui.widthSpinBox->value();
+	_gridAction->_line_width = ui.widthSpinBox->value();
 	if (ui.automaticUpdateCheckBox->isChecked()) update();
 }
 
 void CVActionGridView::on_offsetXSlider_valueChanged()
 {
-	dynamic_cast<core::CV_Action_Grid*>(_action.get())->_offset_x = ((ui.offsetXSlider->value() - ui.offsetXSlider->minimum()) / double(ui.offsetXSlider->maximum() - ui.offsetXSlider->minimum()));
+	_gridAction->_offset_x = ((ui.offsetXSlider->value() - ui.offsetXSlider->minimum()) / double(ui.offsetXSlider->maximum() - ui.offsetXSlider->minimum()));
 	if (ui.automaticUpdateCheckBox->isChecked()) update();
 }
 
 void CVActionGridView::on_offsetYSlider_valueChanged()
 {
-	dynamic_cast<core::CV_Action_Grid*>(_action.get())->_offset_y = ((ui.offsetYSlider->value() - ui.offsetYSlider->minimum()) / double(ui.offsetYSlider->maximum() - ui.offsetYSlider->minimum()));
+	_gridAction->_offset_y = ((ui.offsetYSlider->value() - ui.offsetYSlider->minimum()) / double(ui.offsetYSlider->maximum() - ui.offsetYSlider->minimum()));
 	if (ui.automaticUpdateCheckBox->isChecked()) update();
 }
 

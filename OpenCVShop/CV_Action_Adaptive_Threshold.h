@@ -7,7 +7,7 @@ namespace core{
 	public:
 		CV_Action_Adaptive_Threshold() : _maxValue(0), _adaptiveMethod(cv::AdaptiveThresholdTypes::ADAPTIVE_THRESH_GAUSSIAN_C),
 			_threshType(cv::ThresholdTypes::THRESH_BINARY), _blockSize(3), _c(0){}
-		void operator()(cv::InputArray src, cv::OutputArray out) const;
+		void operator()(const CV_Image& src, CV_Image& out) const;
 		std::string description() const;
 	public:
 		double _maxValue;

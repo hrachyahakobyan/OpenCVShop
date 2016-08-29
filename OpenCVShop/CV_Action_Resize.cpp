@@ -1,12 +1,12 @@
 #include "stdafx.h"
 #include "CV_Action_Resize.h"
 
-namespace core{ void CV_Action_Resize::operator()(cv::InputArray input, cv::OutputArray output) const
+namespace core{
+	void CV_Action_Resize::operator()(const CV_Image& src, CV_Image& out) const
 	{
-		cv::Mat src = input.getMat();
 		cv::Mat dst;
-		cv::resize(src, dst, _size, 0, 0, _interFlag);
-		output.assign(dst);
+		cv::resize(src.mat(), dst, _size, 0, 0, _interFlag);
+		out.setMat(dst, src.colorspace());
 	}
 
 	std::string CV_Action_Resize::description() const

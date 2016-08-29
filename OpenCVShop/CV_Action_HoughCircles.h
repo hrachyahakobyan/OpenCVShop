@@ -6,7 +6,7 @@ namespace core{
 	{
 	public:
 		CV_Action_HoughCircles() : _method(CV_HOUGH_GRADIENT), _dp(1), _minDist(1), _param1(100), _param2(100), _minRad(0), _maxRad(100){}
-		void operator()(cv::InputArray input, cv::OutputArray output) const;
+		void operator()(const CV_Image& src, CV_Image& out) const;
 		std::string description() const;
 	public:
 		int _method;

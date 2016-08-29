@@ -7,9 +7,9 @@ namespace core{
 		if (src.empty())
 			return;
 		if (src.channels() == 3)
-			cv::cvtColor(src, dst, CV_BGR2GRAY);
+			cv::cvtColor(src, dst, CV_RGB2GRAY);
 		else if (src.channels() == 4)
-			cv::cvtColor(src, dst, CV_BGRA2GRAY);
+			cv::cvtColor(src, dst, CV_RGBA2GRAY);
 		else
 			dst = shared ? src : src.clone();
 	}

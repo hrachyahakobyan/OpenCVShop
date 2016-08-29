@@ -7,7 +7,7 @@ namespace core{
 	public:
 		CV_Action_Resize() : _size(cv::Size(50, 50)), _interFlag(cv::InterpolationFlags::INTER_LINEAR) {}
 		CV_Action_Resize(const cv::Size& size, int interFlag) : _size(size), _interFlag(interFlag){}
-		void operator()(cv::InputArray input, cv::OutputArray output) const;
+		void operator()(const CV_Image& src, CV_Image& out) const;
 		std::string description() const;
 	public:
 		cv::Size _size;

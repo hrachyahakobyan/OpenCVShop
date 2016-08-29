@@ -44,8 +44,8 @@ public:
     QGraphicsView *graphicsView;
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
-    QPushButton *cancelButton;
     QPushButton *okButton;
+    QPushButton *cancelButton;
     QPushButton *updateButton;
 
     void setupUi(CVActionView *CVActionAdaptiveThresholdView)
@@ -129,17 +129,17 @@ public:
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        cancelButton = new QPushButton(widget);
-        cancelButton->setObjectName(QStringLiteral("cancelButton"));
-        cancelButton->setMaximumSize(QSize(100, 16777215));
-
-        horizontalLayout->addWidget(cancelButton);
-
         okButton = new QPushButton(widget);
         okButton->setObjectName(QStringLiteral("okButton"));
         okButton->setMaximumSize(QSize(100, 16777215));
 
         horizontalLayout->addWidget(okButton);
+
+        cancelButton = new QPushButton(widget);
+        cancelButton->setObjectName(QStringLiteral("cancelButton"));
+        cancelButton->setMaximumSize(QSize(100, 16777215));
+
+        horizontalLayout->addWidget(cancelButton);
 
         updateButton = new QPushButton(widget);
         updateButton->setObjectName(QStringLiteral("updateButton"));
@@ -172,8 +172,8 @@ public:
          << QApplication::translate("CVActionAdaptiveThresholdView", "Threshold type binary", 0)
          << QApplication::translate("CVActionAdaptiveThresholdView", "Threshold type inverse binary", 0)
         );
-        cancelButton->setText(QApplication::translate("CVActionAdaptiveThresholdView", "Cancel", 0));
         okButton->setText(QApplication::translate("CVActionAdaptiveThresholdView", "OK", 0));
+        cancelButton->setText(QApplication::translate("CVActionAdaptiveThresholdView", "Cancel", 0));
         updateButton->setText(QApplication::translate("CVActionAdaptiveThresholdView", "Update", 0));
     } // retranslateUi
 

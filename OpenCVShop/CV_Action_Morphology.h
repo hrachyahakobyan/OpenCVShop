@@ -12,5 +12,6 @@ namespace core{
 	public:
 		cv::Size _ksize;
 		int _morphShape;
+		int _iterations;
 	};
 }

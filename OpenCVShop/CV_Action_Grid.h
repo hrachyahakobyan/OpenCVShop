@@ -5,7 +5,7 @@ namespace core{
 	{
 	public:
 		CV_Action_Grid() : _angle(30.0), _dist(5.0), _line_width(2), _offset_x(0.0), _offset_y(0.0), _color(0, 0, 0){}
-		void operator()(cv::InputArray input, cv::OutputArray output) const;
+		void operator()(const CV_Image& src, CV_Image& out) const;
 		std::string description() const;
 	public:
 		double _angle;

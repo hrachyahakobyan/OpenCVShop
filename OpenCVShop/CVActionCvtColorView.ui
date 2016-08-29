@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>273</width>
+    <width>333</width>
     <height>122</height>
    </rect>
   </property>
@@ -35,17 +35,17 @@
        <widget class="QComboBox" name="targetComboBox">
         <item>
          <property name="text">
-          <string>BGR</string>
+          <string>RGB</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>BGRA</string>
+          <string>RGBA</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Grayscale</string>
+          <string>Gray</string>
          </property>
         </item>
        </widget>

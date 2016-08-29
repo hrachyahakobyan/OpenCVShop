@@ -2,13 +2,12 @@
 #include "CV_Action_Grid.h"
 
 namespace core{
-	void CV_Action_Grid::operator()(cv::InputArray input, cv::OutputArray output) const
+	void CV_Action_Grid::operator()(const CV_Image& src, CV_Image& out) const
 	{
-		cv::Mat src = input.getMat();
-		cv::Mat dst = src.clone();
+		cv::Mat dst = src.mat().clone();
 		grid(dst, GridDirection::Lef2Right);
 		grid(dst, GridDirection::Right2Left);
-		output.assign(dst);
+		out.setMat(dst, src.colorspace());
 	}
 
 	std::string CV_Action_Grid::description() const

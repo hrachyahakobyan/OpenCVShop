@@ -12,6 +12,7 @@
 #include "CVActionGridView.h"
 #include "CVActionEqHistView.h"
 #include "CVActionHoughCirclesView.h"
+#include "CVActionRotateView.h"
 
 
 CVActionViewFactory::CVActionViewFactory()
@@ -29,12 +30,12 @@ CVActionViewFactory::CVActionViewFactory()
 	Register<CVActionGridView>(core::CV_Action_Type::Grid);
 	Register<CVActionEqHistView>(core::CV_Action_Type::EqHist);
 	Register<CVActionHoughCirclesView>(core::CV_Action_Type::HoughCicles);
+	Register<CVActionRotateView>(core::CV_Action_Type::Rotate);
 }
 
-std::unique_ptr<CVActionView> CVActionViewFactory::cv_action_view(core::CV_Action_Type type, QWidget* parent, const QImage& src)
+std::unique_ptr<CVActionView> CVActionViewFactory::cv_action_view(core::CV_Action_Type type, QWidget* parent, std::unique_ptr<CV_Action_Wrapper> wrapper)
 {
-	auto action = core::CV_Action_Factory::sharedFactory().cv_action(type);
 	auto iter = _func_map.find(type);
-	auto viewptr = std::unique_ptr<CVActionView>(iter->second(parent, std::move(action), src));
+	auto viewptr = std::unique_ptr<CVActionView>(iter->second(parent, std::move(wrapper)));
 	return viewptr;
 }

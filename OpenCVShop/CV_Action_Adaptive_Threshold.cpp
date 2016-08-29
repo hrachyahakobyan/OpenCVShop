@@ -3,12 +3,11 @@
 
 
 namespace core{
-	void CV_Action_Adaptive_Threshold::operator()(cv::InputArray input, cv::OutputArray output) const
+	void CV_Action_Adaptive_Threshold::operator()(const CV_Image& src, CV_Image& out) const
 	{
-		cv::Mat src = input.getMat();
-		output.create(src.size(), src.type());
-		cv::Mat dst = output.getMat();
-		cv::adaptiveThreshold(src, dst, _maxValue, _adaptiveMethod, _threshType, _blockSize, _c);
+		cv::Mat dst;
+		cv::adaptiveThreshold(src.mat(), dst, _maxValue, _adaptiveMethod, _threshType, _blockSize, _c);
+		out.setMat(dst, CV_Colorspace::Gray, false);
 	}
 
 	std::string CV_Action_Adaptive_Threshold::description() const

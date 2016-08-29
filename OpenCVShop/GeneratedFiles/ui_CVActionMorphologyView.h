@@ -36,6 +36,8 @@ public:
     QComboBox *morphTypeComboBox;
     QSpinBox *kernelSizeSpinBox;
     QLabel *label;
+    QSpinBox *iterationsSpinBox;
+    QLabel *label_2;
     QGraphicsView *graphicsView;
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
@@ -91,6 +93,19 @@ public:
         label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         horizontalLayout_2->addWidget(label);
+
+        iterationsSpinBox = new QSpinBox(widget_2);
+        iterationsSpinBox->setObjectName(QStringLiteral("iterationsSpinBox"));
+        iterationsSpinBox->setMinimum(1);
+        iterationsSpinBox->setMaximum(100);
+
+        horizontalLayout_2->addWidget(iterationsSpinBox);
+
+        label_2 = new QLabel(widget_2);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        horizontalLayout_2->addWidget(label_2);
 
 
         verticalLayout->addWidget(widget_2);
@@ -157,6 +172,7 @@ public:
          << QApplication::translate("CVActionMorphologyView", "MORHP_BLACKHAT", 0)
         );
         label->setText(QApplication::translate("CVActionMorphologyView", "Kernel size", 0));
+        label_2->setText(QApplication::translate("CVActionMorphologyView", "Iterations", 0));
         okButton->setText(QApplication::translate("CVActionMorphologyView", "OK", 0));
         cancelButton->setText(QApplication::translate("CVActionMorphologyView", "Cancel", 0));
         updateButton->setText(QApplication::translate("CVActionMorphologyView", "Update", 0));

@@ -6,7 +6,7 @@ namespace core{
 	{
 	public:
 		CV_Action_EqHist(){}
-		void operator()(cv::InputArray input, cv::OutputArray output) const;
+		void operator()(const CV_Image& src, CV_Image& out) const;
 		std::string description() const;
 	private:
 		void eqHistColor(const cv::Mat& src, cv::Mat& dst) const;

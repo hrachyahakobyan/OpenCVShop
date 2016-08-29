@@ -3,12 +3,11 @@
 
 
 namespace core{
-	void CV_Action_Dilate::operator()(cv::InputArray input, cv::OutputArray output) const
+	void CV_Action_Dilate::operator()(const CV_Image& src, CV_Image& out) const
 	{
-		cv::Mat src = input.getMat();
-		output.create(src.size(), src.type());
-		cv::Mat dst = output.getMat();
-		cv::dilate(src, dst, cv::getStructuringElement(_morphShape, _ksize));
+		cv::Mat dst;
+		cv::dilate(src.mat(), dst, cv::getStructuringElement(_morphShape, _ksize), cv::Point(-1, -1), _iterations);
+		out.setMat(dst, src.colorspace());
 	}
 
 	std::string CV_Action_Dilate::description() const

@@ -11,7 +11,7 @@ public:
 		return factory;
 	}
 
-	std::unique_ptr<CVActionView> cv_action_view(core::CV_Action_Type type, QWidget* parent, const QImage& src);
+	std::unique_ptr<CVActionView> cv_action_view(core::CV_Action_Type type, QWidget* parent, std::unique_ptr<CV_Action_Wrapper> wrapper);
 	
 	template<class T>
 	void Register(core::CV_Action_Type type)
@@ -25,12 +25,12 @@ private:
 	CVActionViewFactory& operator=(const CVActionViewFactory&){}
 
 	template<class T>
-	static CVActionView* CreateFunc(QWidget* parent, std::unique_ptr<core::CV_Action_Base> action, const QImage& src)
+	static CVActionView* CreateFunc(QWidget* parent, std::unique_ptr<CV_Action_Wrapper> wrapper)
 	{
-		return new T(parent, std::move(action), src);
+		return new T(parent, std::move(wrapper));
 	}
 private:
-	typedef CVActionView* (*PCreateFunc)(QWidget*, std::unique_ptr<core::CV_Action_Base>, const QImage&);
+	typedef CVActionView* (*PCreateFunc)(QWidget* parent, std::unique_ptr<CV_Action_Wrapper> wrapper);;
 	std::unordered_map<core::CV_Action_Type, PCreateFunc> _func_map;
 };
 
