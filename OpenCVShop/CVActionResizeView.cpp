@@ -7,8 +7,8 @@ CVActionView(parent, std::move(wrapper))
 {
 	ui.setupUi(this);
 	_resizeAction = dynamic_cast<core::CV_Action_Resize*>(_actionWrapper->_action.get());
-	ui.heightSpinBox->setValue(wrapper->source().mat().rows);
-	ui.widthSpinBox->setValue(wrapper->source().mat().cols);
+	ui.heightSpinBox->setValue(_actionWrapper->source().mat().rows);
+	ui.widthSpinBox->setValue(_actionWrapper->source().mat().cols);
 }
 
 CVActionResizeView::~CVActionResizeView()

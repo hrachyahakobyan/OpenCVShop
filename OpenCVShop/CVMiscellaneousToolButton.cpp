@@ -9,8 +9,9 @@ CVMiscellaneousToolButton::CVMiscellaneousToolButton(QWidget *parent)
 	CV_QAction* threshAction = new CV_QAction("Threshold", this, core::CV_Action_Type::Threshold);
 	CV_QAction* cvtAction = new CV_QAction("Convert", this, core::CV_Action_Type::CvtColor);
 	CV_QAction* gridAction = new CV_QAction("Grid", this, core::CV_Action_Type::Grid);
+	CV_QAction* shapesAction = new CV_QAction("Shapes", this, core::CV_Action_Type::Shapes);
 
-	QList<CV_QAction*> actions({threshAction, cvtAction, gridAction });
+	QList<CV_QAction*> actions({ threshAction, cvtAction, gridAction, shapesAction });
 	setActions(actions, adThreshAction);
 }
 
