@@ -15,7 +15,9 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -40,6 +42,12 @@ public:
     QGridLayout *gridLayout;
     QGraphicsView *graphicsView;
     QListView *actionListView;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
+    QLabel *label_3;
+    QLabel *widthLabel;
+    QLabel *label_4;
+    QLabel *heightLabel;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuFilters;
@@ -86,6 +94,42 @@ public:
 
         gridLayout->addWidget(actionListView, 0, 1, 1, 1);
 
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setMinimumSize(QSize(0, 25));
+        widget->setMaximumSize(QSize(300, 16777215));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        label_3 = new QLabel(widget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout->addWidget(label_3);
+
+        widthLabel = new QLabel(widget);
+        widthLabel->setObjectName(QStringLiteral("widthLabel"));
+        widthLabel->setMaximumSize(QSize(100, 16777215));
+
+        horizontalLayout->addWidget(widthLabel);
+
+        label_4 = new QLabel(widget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setMinimumSize(QSize(40, 0));
+        label_4->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout->addWidget(label_4);
+
+        heightLabel = new QLabel(widget);
+        heightLabel->setObjectName(QStringLiteral("heightLabel"));
+        heightLabel->setMaximumSize(QSize(100, 16777215));
+
+        horizontalLayout->addWidget(heightLabel);
+
+
+        gridLayout->addWidget(widget, 1, 0, 1, 2);
+
         OpenCVShopClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(OpenCVShopClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -128,6 +172,10 @@ public:
         actionEx_morphology->setText(QApplication::translate("OpenCVShopClass", "Ex. morphology", 0));
         actionGaussian->setText(QApplication::translate("OpenCVShopClass", "Gaussian", 0));
         actionExit->setText(QApplication::translate("OpenCVShopClass", "Exit", 0));
+        label_3->setText(QApplication::translate("OpenCVShopClass", "Width:", 0));
+        widthLabel->setText(QString());
+        label_4->setText(QApplication::translate("OpenCVShopClass", "Height:", 0));
+        heightLabel->setText(QString());
         menuFile->setTitle(QApplication::translate("OpenCVShopClass", "File", 0));
         menuFilters->setTitle(QApplication::translate("OpenCVShopClass", "Edit", 0));
     } // retranslateUi

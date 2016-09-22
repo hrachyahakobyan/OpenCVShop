@@ -15,6 +15,7 @@
 #include "CV_Action_HoughCircles.h"
 #include "CV_Action_Rotate.h"
 #include "CV_Action_Shapes.h"
+#include "CV_Action_Crop.h"
 
 namespace core{
 	CV_Action_Factory::CV_Action_Factory()
@@ -34,6 +35,7 @@ namespace core{
 		Register<CV_Action_HoughCircles>(CV_Action_Type::HoughCicles);
 		Register<CV_Action_Rotate>(CV_Action_Type::Rotate);
 		Register<CV_Action_Shapes>(CV_Action_Type::Shapes);
+		Register<CV_Action_Crop>(CV_Action_Type::Crop);
 	}
 
 	std::unique_ptr<CV_Action_Base> CV_Action_Factory::cv_action(CV_Action_Type type)

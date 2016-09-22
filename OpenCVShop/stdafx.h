@@ -4,6 +4,7 @@
 #include <QImage>
 #include <QSysInfo>
 #include <QDebug>
+#include <QFrame>
 #include <cstring>
 
 // STL

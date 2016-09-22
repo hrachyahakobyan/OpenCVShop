@@ -63,6 +63,8 @@ void OpenCVShop::updateUI()
 	ui.graphicsView->setScene(_imageScene.get());
 	_listModel = std::unique_ptr<QStringListModel>(new QStringListModel(_session->description()));
 	ui.actionListView->setModel(_listModel.get());
+	ui.widthLabel->setText(QString(std::to_string(img.width()).c_str()));
+	ui.heightLabel->setText(QString(std::to_string(img.height()).c_str()));
 }
 
 void OpenCVShop::addToolButton(CVActionToolButton* toolButton)

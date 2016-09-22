@@ -26,3 +26,9 @@ void CVActionCvtColorView::on_targetComboBox_currentIndexChanged(int)
 		_cvtAction->_code = code;
 	}
 }
+
+void CVActionCvtColorView::on_okButton_clicked()
+{
+	update();
+	CVActionView::on_okButton_clicked();
+}

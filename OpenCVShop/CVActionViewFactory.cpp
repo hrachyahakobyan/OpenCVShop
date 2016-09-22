@@ -14,6 +14,7 @@
 #include "CVActionHoughCirclesView.h"
 #include "CVActionRotateView.h"
 #include "CVActionShapesView.h"
+#include "CVActionCropView.h"
 
 
 CVActionViewFactory::CVActionViewFactory()
@@ -33,6 +34,7 @@ CVActionViewFactory::CVActionViewFactory()
 	Register<CVActionHoughCirclesView>(core::CV_Action_Type::HoughCicles);
 	Register<CVActionRotateView>(core::CV_Action_Type::Rotate);
 	Register<CVActionShapesView>(core::CV_Action_Type::Shapes);
+	Register<CVActionCropView>(core::CV_Action_Type::Crop);
 }
 
 std::unique_ptr<CVActionView> CVActionViewFactory::cv_action_view(core::CV_Action_Type type, QWidget* parent, std::unique_ptr<CV_Action_Wrapper> wrapper)

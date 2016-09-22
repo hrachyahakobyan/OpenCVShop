@@ -14,7 +14,6 @@ namespace core{
 			dst = src.mat().clone();
 		cv::Mat proc;
 		preprocess(src.mat(), proc);
-		cv::imshow("Proc", proc);
 		std::vector<std::vector<cv::Point>> contours;
 		extract(proc, contours);
 		std::vector<std::vector<cv::Point>> shapes;

@@ -22,6 +22,7 @@ private:
 	core::CV_Action_CvtColor* _cvtAction;
 public Q_SLOTS:
 	void on_targetComboBox_currentIndexChanged(int);
+	void on_okButton_clicked();
 };
 
 #endif // CVACTIONCVTCOLORVIEW_H

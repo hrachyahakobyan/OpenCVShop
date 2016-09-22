@@ -10,7 +10,7 @@ namespace core{
 			CV_Error(cv::Error::Code::StsUnmatchedFormats, "Incompatible source while converting formats");
 		int dstChannels = channelsForColorspace(dstColor);
 		cv::Mat dst;
-		cv::cvtColor(src.mat(), dst, dstChannels);
+		cv::cvtColor(src.mat(), dst, _code, dstChannels);
 		out.setMat(dst, dstColor);
 	}
 	

@@ -40,7 +40,6 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *okButton;
     QPushButton *cancelButton;
-    QPushButton *updateButton;
 
     void setupUi(CVActionView *CVActionCvtColorView)
     {
@@ -82,7 +81,7 @@ public:
 
         widget = new QWidget(CVActionCvtColorView);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setMaximumSize(QSize(300, 16777215));
+        widget->setMaximumSize(QSize(200, 16777215));
         widget->setLayoutDirection(Qt::RightToLeft);
         horizontalLayout = new QHBoxLayout(widget);
         horizontalLayout->setSpacing(6);
@@ -99,12 +98,6 @@ public:
         cancelButton->setMaximumSize(QSize(100, 16777215));
 
         horizontalLayout->addWidget(cancelButton);
-
-        updateButton = new QPushButton(widget);
-        updateButton->setObjectName(QStringLiteral("updateButton"));
-        updateButton->setMaximumSize(QSize(100, 16777215));
-
-        horizontalLayout->addWidget(updateButton);
 
 
         verticalLayout->addWidget(widget);
@@ -128,7 +121,6 @@ public:
         );
         okButton->setText(QApplication::translate("CVActionCvtColorView", "OK", 0));
         cancelButton->setText(QApplication::translate("CVActionCvtColorView", "Cancel", 0));
-        updateButton->setText(QApplication::translate("CVActionCvtColorView", "Convert", 0));
     } // retranslateUi
 
 };
